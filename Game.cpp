@@ -24,7 +24,7 @@ Game::Game() {
   arrCol = 0;
   arrRow = 0;
 
-  
+
 
   m_p1oppBoard=new Board();
   m_p1ownBoard=new Board();
@@ -33,7 +33,7 @@ Game::Game() {
 
 
     m_currentPlayer=1;
-    
+
     //string variables for text in console
     letsPlay = "\n  _          _         _____  _             _ \n | |        | |       |  __ \\| |           | |\n | |     ___| |_ ___  | |__) | | __ _ _   _| |\n | |    / _ \\ __/ __| |  ___/| |/ _` | | | | |\n | |___|  __/ |_\\__ \\ | |    | | (_| | |_| |_|\n |______\\___|\\__|___/ |_|    |_|\\__,_|\\__, (_)\n                                       __/ |  \n                                      |___/   \n";
     p1Text = "\n  _____  _                          ____             \n |  __ \\| |                        / __ \\            \n | |__) | | __ _ _   _  ___ _ __  | |  | |_ __   ___ \n |  ___/| |/ _` | | | |/ _ \\ '__| | |  | | '_ \\ / _ \\\n | |    | | (_| | |_| |  __/ |    | |__| | | | |  __/\n |_|    |_|\\__,_|\\__, |\\___|_|     \\____/|_| |_|\\___|\n                  __/ |                              \n                 |___/                               \n";
@@ -84,7 +84,7 @@ void Game::setup(){
     string userRowString="";
     Board* currentPlayerBoard=nullptr;
     printBattleship();
-    
+
   //gets number of ships
   do{
       cout << "Enter the amount of ships both players want to use (Max: 5):  ";
@@ -107,10 +107,10 @@ void Game::setup(){
         }else{
             printPlayerTurn(2);
         }
-        
+
         switch (m_numShips) {
             case 1:
-                
+
                 cout << "Enter the coordinates for player "<<j<<"'s ship 1 (1x1): \n";
 
                 do{
@@ -123,7 +123,7 @@ void Game::setup(){
                 }while(userRowString!="1" && userRowString!="2" && userRowString!="3" && userRowString!="4" && userRowString!="5" && userRowString!="6" && userRowString!="7" && userRowString!="8");
                 userRow=stoi(userRowString);
                 arrRow=userRow-1;
-                
+
                 do{
                     cout << "Col (A-H): ";
                     cin >> userCol;
@@ -133,7 +133,7 @@ void Game::setup(){
                         std::cout<<"Invalid column. Must be A to H. Try again.\n";
                     }
                 }while(arrCol < 0 || arrCol > 7);
-                
+
                 userDirection="none";//set userDirection=none because ship of size 1 is only one point on the array
 
                 if(m_currentPlayer==1){
@@ -154,14 +154,14 @@ void Game::setup(){
                 break;
 
             case 2:
-                
+
                 for(int i=1; i<3; i++)
                 {
                     std::string shipString=to_string(i);
                     int shipNum=i;
 
                     shipPlacementInteraction(i, j, currentPlayerBoard);
-                    
+
                     if(m_currentPlayer==1)
                     {
                         if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
@@ -184,14 +184,14 @@ void Game::setup(){
                 break;
 
             case 3:
-                
+
                 for(int i=1; i<4; i++)
                 {
                     std::string shipString=to_string(i);
                     int shipNum=i;
-                    
+
                     shipPlacementInteraction(i, j, currentPlayerBoard);
-                    
+
                     if(m_currentPlayer==1)
                     {
                         if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
@@ -214,14 +214,14 @@ void Game::setup(){
                 break;
 
             case 4:
-                
+
                 for(int i=1; i<5; i++)
                 {
                     std::string shipString=to_string(i);
                     int shipNum=i;
-                    
+
                     shipPlacementInteraction(i, j, currentPlayerBoard);
-                    
+
                     if(m_currentPlayer==1)
                     {
                         if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
@@ -244,14 +244,14 @@ void Game::setup(){
                 break;
 
             case 5:
-                
+
                 for(int i=1; i<6; i++)
                 {
                     std::string shipString=to_string(i);
                     int shipNum=i;
-                    
+
                     shipPlacementInteraction(i, j, currentPlayerBoard);
-                    
+
                     if(m_currentPlayer==1)
                     {
                         if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
@@ -302,7 +302,7 @@ void Game::run(){
         endGame = false;
         break;
     }
-    
+
     //player 2 turn
     printPlayerTurn(2);
     p2Turn();
@@ -343,7 +343,7 @@ void Game::p1Turn(){
     }
     }
   //gets good input from the user
-  
+
   //checks if isHit() or not
   if(isHit(m_p2ownBoard, p1_attack_row, p1_attack_col)){
     cout << "That's a HIT!" << endl;
@@ -391,7 +391,7 @@ void Game::p2Turn(){
         }
 
     }
-    
+
     //hit or miss,
     if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
       cout << "That's a HIT!" << endl;
@@ -770,7 +770,6 @@ void Game::printBattleship(){
 void Game::printCoordinateInteraction(Board* currentPlayerBoard, int shipNum){
     string userRowString="";
     bool keepAsking = false;
-
     do{
         keepAsking = false;
         do{
@@ -783,7 +782,7 @@ void Game::printCoordinateInteraction(Board* currentPlayerBoard, int shipNum){
         }while(userRowString!="1" && userRowString!="2" && userRowString!="3" && userRowString!="4" && userRowString!="5" && userRowString!="6" && userRowString!="7" && userRowString!="8");
         userRow=stoi(userRowString);
         arrRow=userRow-1;
-        
+
         do{
             cout << "Col (A-H): ";
             cin >> userCol;
@@ -793,7 +792,7 @@ void Game::printCoordinateInteraction(Board* currentPlayerBoard, int shipNum){
                 std::cout<<"Invalid column. Must be A to H. Try again.\n";
             }
         }while(arrCol < 0 || arrCol > 7);
-        
+
         if(!isAvailable(currentPlayerBoard, arrRow, arrCol)){
             cout<< "This coordinate has already been taken. Enter new coordinates:\n";
             keepAsking = true;
@@ -810,7 +809,7 @@ void Game::printCoordinateInteraction(Board* currentPlayerBoard, int shipNum){
 
 void Game::shipPlacementInteraction(int i, int j, Board* currentPlayerBoard){
     int shipNum=i;
-    
+
         if(m_currentPlayer==1)
         {
             currentPlayerBoard=m_p1ownBoard;
@@ -819,9 +818,9 @@ void Game::shipPlacementInteraction(int i, int j, Board* currentPlayerBoard){
         {
             currentPlayerBoard=m_p2ownBoard;
         }
-        
+
         cout<<"Enter the coordinates for player "<<j<<"'s ship "<<i<<" (1x"<<i<<")\n";
-        
+
         printCoordinateInteraction(currentPlayerBoard, shipNum);
 
         if(i>1)
@@ -831,7 +830,7 @@ void Game::shipPlacementInteraction(int i, int j, Board* currentPlayerBoard){
             if(checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "down")){ std::cout<<" down ";}
             if(checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "left")){ std::cout<<" left ";}
             if(checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "right")){ std::cout<<" right ";}
-            
+
             do
             {
                 std::cout<<"\nIn which direction do you want the ship to be placed (up/down/left/right):";
@@ -850,7 +849,7 @@ void Game::shipPlacementInteraction(int i, int j, Board* currentPlayerBoard){
 
 void Game::printPlayerTurn(int player){
     clearConsole();
-    
+
     if(player==1){
         cout << p1Text << endl;
     } else {
@@ -860,3 +859,370 @@ void Game::printPlayerTurn(int player){
     cin >> wait;
 }
 
+void Game::setup_for_AI()
+{
+	string numShipsString="";
+	string userRowString="";
+	Board* currentPlayerBoard=nullptr;
+	string arr_direction[4] = {"up","down","left","right"};
+	printBattleship();
+
+//gets number of ships
+do{
+		cout << "Enter the amount of ships both players want to use (Max: 5):  ";
+		cin>>numShipsString;
+		if(numShipsString!="1" && numShipsString!="2" && numShipsString!="3" && numShipsString!="4" && numShipsString!="5")
+		{
+				std::cout<<"Invalid number of ships. Must be 1 to 5. Try again.\n";
+		}
+}while(numShipsString!="1" && numShipsString!="2" && numShipsString!="3" && numShipsString!="4" && numShipsString!="5");
+	m_numShips=stoi(numShipsString);
+
+	for(int j=1; j<3; j++)
+	{
+	    if(j==1){
+	        printPlayerTurn(1);
+	    }else{
+	        printPlayerTurn(2);
+	    }
+	    if(m_currentPlayer==1)
+	    {
+	    switch (m_numShips) {
+	        case 1:
+
+	            cout << "Enter the coordinates for player "<<j<<"'s ship 1 (1x1): \n";
+
+	            do{
+	                cout << "Row (1-8):  ";
+	                cin>>userRowString;
+	                if(userRowString!="1" && userRowString!="2" && userRowString!="3" && userRowString!="4" && userRowString!="5" && userRowString!="6" && userRowString!="7" && userRowString!="8")
+	                {
+	                    std::cout<<"Invalid row. Must be 1 to 8. Try again.\n";
+	                }
+	            }while(userRowString!="1" && userRowString!="2" && userRowString!="3" && userRowString!="4" && userRowString!="5" && userRowString!="6" && userRowString!="7" && userRowString!="8");
+	            userRow=stoi(userRowString);
+	            arrRow=userRow-1;
+
+	            do{
+	                cout << "Col (A-H): ";
+	                cin >> userCol;
+	                arrCol = convertCol(userCol);
+	                if(arrCol < 0 || arrCol > 7)
+	                {
+	                    std::cout<<"Invalid column. Must be A to H. Try again.\n";
+	                }
+	            }while(arrCol < 0 || arrCol > 7);
+
+	            userDirection="none";//set userDirection=none because ship of size 1 is only one point on the array
+
+	            if(m_currentPlayer==1){
+	                if (isAvailable(m_p1ownBoard,arrRow, arrCol))
+	                {
+	                addShiptoArray("1", arrRow, arrCol, userDirection, 1);
+	                std::cout<<"Player 1's current Board:\n";
+	                printOwnBoard(m_p1ownBoard);
+	                }
+	            }else{
+	                if (isAvailable(m_p2ownBoard,arrRow, arrCol))
+	                {
+	                addShiptoArray("1", arrRow, arrCol, userDirection, 2);
+	                std::cout<<"Player 2's current Board:\n";
+	                printOwnBoard(m_p2ownBoard);
+	                }
+	            }
+	            break;
+
+	        case 2:
+
+	            for(int i=1; i<3; i++)
+	            {
+	                std::string shipString=to_string(i);
+	                int shipNum=i;
+
+	                shipPlacementInteraction(i, j, currentPlayerBoard);
+
+	                if(m_currentPlayer==1)
+	                {
+	                    if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 1);
+	                        std::cout<<"Player 1's current Board:\n";
+	                        printOwnBoard(m_p1ownBoard);
+	                    }
+	                }
+	                else
+	                {
+	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
+	                        std::cout<<"Player 2's current Board:\n";
+	                        printOwnBoard(m_p2ownBoard);
+	                    }
+	                }
+	            }
+	            break;
+
+	        case 3:
+
+	            for(int i=1; i<4; i++)
+	            {
+	                std::string shipString=to_string(i);
+	                int shipNum=i;
+
+	                shipPlacementInteraction(i, j, currentPlayerBoard);
+
+	                if(m_currentPlayer==1)
+	                {
+	                    if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 1);
+	                        std::cout<<"Player 1's current Board:\n";
+	                        printOwnBoard(m_p1ownBoard);
+	                    }
+	                }
+	                else
+	                {
+	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
+	                        std::cout<<"Player 2's current Board:\n";
+	                        printOwnBoard(m_p2ownBoard);
+	                    }
+	                }
+	            }
+	            break;
+
+	        case 4:
+
+	            for(int i=1; i<5; i++)
+	            {
+	                std::string shipString=to_string(i);
+	                int shipNum=i;
+
+	                shipPlacementInteraction(i, j, currentPlayerBoard);
+
+	                if(m_currentPlayer==1)
+	                {
+	                    if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 1);
+	                        std::cout<<"Player 1's current Board:\n";
+	                        printOwnBoard(m_p1ownBoard);
+	                    }
+	                }
+	                else
+	                {
+	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
+	                        std::cout<<"Player 2's current Board:\n";
+	                        printOwnBoard(m_p2ownBoard);
+	                    }
+	                }
+	            }
+	            break;
+
+	        case 5:
+
+	            for(int i=1; i<6; i++)
+	            {
+	                std::string shipString=to_string(i);
+	                int shipNum=i;
+
+	                shipPlacementInteraction(i, j, currentPlayerBoard);
+
+	                if(m_currentPlayer==1)
+	                {
+	                    if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 1);
+	                        std::cout<<"Player 1's current Board:\n";
+	                        printOwnBoard(m_p1ownBoard);
+	                    }
+	                }
+	                else
+	                {
+	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
+	                        std::cout<<"Player 2's current Board:\n";
+	                        printOwnBoard(m_p2ownBoard);
+	                    }
+	                }
+	            }
+	            break;
+	    }
+      m_currentPlayer=2;
+	  }
+	  else
+	  {
+	    switch (m_numShips) {
+	        case 1:
+	        arrRow=rand()%7;
+	        arrCol = rand()%7;
+          std::cout<<"\nI'm herer\n";
+	            userDirection="none";//set userDirection=none because ship of size 1 is only one point on the array
+
+	            if(m_currentPlayer==1){
+	                if (isAvailable(m_p1ownBoard,arrRow, arrCol))
+	                {
+	                addShiptoArray("1", arrRow, arrCol, userDirection, 1);
+	                std::cout<<"Player 1's current Board:\n";
+	                printOwnBoard(m_p1ownBoard);
+	                }
+	            }else{
+	                if (isAvailable(m_p2ownBoard,arrRow, arrCol))
+	                {
+	                addShiptoArray("1", arrRow, arrCol, userDirection, 2);
+	                std::cout<<"Player 2's current Board:\n";
+	                printOwnBoard(m_p2ownBoard);
+	                }
+	            }
+	            break;
+
+	        case 2:
+
+	            for(int i=1; i<3; i++)
+	            {
+	                std::string shipString=to_string(i);
+	                int shipNum=i;
+
+	                currentPlayerBoard = m_p2ownBoard;
+                  printCoordinateInteraction_AI(currentPlayerBoard, i);
+                  if(i==1)
+                  {
+                    userDirection="none";
+                  }
+                  else
+                  {
+                    do
+  	                {
+  	                    int index = rand()%4;
+  	                    userDirection = arr_direction[index];
+  	                }while((userDirection!="up" && userDirection!="down" && userDirection!="left" && userDirection!="right") || (checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, userDirection)==false));
+                  }
+	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
+	                        std::cout<<"Player 2's current Board:\n";
+	                        printOwnBoard(m_p2ownBoard);
+	                    }
+	            }
+	            break;
+
+	        case 3:
+
+	            for(int i=1; i<4; i++)
+	            {
+	                std::string shipString=to_string(i);
+	                int shipNum=i;
+
+									currentPlayerBoard = m_p2ownBoard;
+                  printCoordinateInteraction_AI(currentPlayerBoard, i);
+                  if(i==1)
+                  {
+                    userDirection="none";
+                  }
+                  else
+                  {
+                    do
+  	                {
+  	                    int index = rand()%4;
+  	                    userDirection = arr_direction[index];
+  	                }while((userDirection!="up" && userDirection!="down" && userDirection!="left" && userDirection!="right") || (checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, userDirection)==false));
+                  }
+
+	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
+	                        std::cout<<"Player 2's current Board:\n";
+	                        printOwnBoard(m_p2ownBoard);
+	                    }
+	            }
+	            break;
+
+	        case 4:
+
+	            for(int i=1; i<5; i++)
+	            {
+	                std::string shipString=to_string(i);
+	                int shipNum=i;
+
+									currentPlayerBoard = m_p2ownBoard;
+                  printCoordinateInteraction_AI(currentPlayerBoard, i);
+                  if(i==1)
+                  {
+                    userDirection="none";
+                  }
+                  else
+                  {
+                    do
+  	                {
+  	                    int index = rand()%4;
+  	                    userDirection = arr_direction[index];
+  	                }while((userDirection!="up" && userDirection!="down" && userDirection!="left" && userDirection!="right") || (checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, userDirection)==false));
+                  }
+	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
+	                        std::cout<<"Player 2's current Board:\n";
+	                        printOwnBoard(m_p2ownBoard);
+	                    }
+
+	            }
+	            break;
+
+	        case 5:
+
+	            for(int i=1; i<6; i++)
+	            {
+	                std::string shipString=to_string(i);
+	                int shipNum=i;
+
+									currentPlayerBoard = m_p2ownBoard;
+                  printCoordinateInteraction_AI(currentPlayerBoard, i);
+                  if(i==1)
+                  {
+                    userDirection="none";
+                  }
+                  else
+                  {
+                    do
+  	                {
+  	                    int index = rand()%4;
+  	                    userDirection = arr_direction[index];
+  	                }while((userDirection!="up" && userDirection!="down" && userDirection!="left" && userDirection!="right") || (checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, userDirection)==false));
+                  }
+	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
+	                    {
+	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
+	                        std::cout<<"Player 2's current Board:\n";
+	                        printOwnBoard(m_p2ownBoard);
+	                    }
+	            }
+	            break;
+	    }
+	    }
+	  }
+}
+
+void Game::printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum){
+    string userRowString="";
+    bool keepAsking = false;
+
+    do{
+        keepAsking = false;
+        arrRow=rand()%7;
+        arrCol = rand()%7;
+
+        if(!isAvailable(currentPlayerBoard, arrRow, arrCol)){
+            keepAsking = true;
+        }
+        if(checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "up")==false && checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "down")==false && checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "left")==false &&
+           checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "right")==false && keepAsking != true)
+        {
+            keepAsking = true;
+        }
+
+    }while(keepAsking == true);
+}

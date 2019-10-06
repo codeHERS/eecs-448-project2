@@ -11,6 +11,8 @@
 #include "Ships.h"
 #include <string>
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 class Game{
@@ -161,7 +163,7 @@ class Game{
      */
     int getUserCol();
     /**
-     * @pre board contains ships 1,2,3,4,5. 
+     * @pre board contains ships 1,2,3,4,5.
      * @post checks if a coordinate on a board is a hit or miss
      * @param Board - players board to check
      * @param int row - row
@@ -204,8 +206,8 @@ class Game{
      * @param player: the current player
      */
     void printPlayerTurn(int player);
-
-
+    void setup_for_AI();
+    void printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum);
 
 };
 #endif
