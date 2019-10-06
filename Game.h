@@ -59,7 +59,7 @@ class Game{
      * @pre a game object exists
      * @post game play happens in this method
      */
-    void run();
+    void run(bool check);
     /**
      * @pre a game object exists
      * @post each players' ships are placed on their respective boards
@@ -208,6 +208,6 @@ class Game{
     void printPlayerTurn(int player);
     void setup_for_AI();
     void printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum);
-
+    void p2Turn_AI_easy();
 };
 #endif

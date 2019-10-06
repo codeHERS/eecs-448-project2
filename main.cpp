@@ -19,12 +19,14 @@ std::cin>>playWith;
     if(playWith=="n")
     {
       game1.setup();
-      game1.run();
+      game1.run(false);
     }
 
     else
     {
       game1.setup_for_AI();
+      game1.run(true);
+
     }
 
   }
