@@ -1,6 +1,6 @@
 /**
- *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao)
- *   @date 9/19/19
+ *   @author CodeHERS
+ *   @date 
  *   @file Game.h
  *   @brief declares methods and member variables needed for game play
  */
@@ -161,7 +161,7 @@ class Game{
      */
     int getUserCol();
     /**
-     * @pre board contains ships 1,2,3,4,5. 
+     * @pre board contains ships 1,2,3,4,5.
      * @post checks if a coordinate on a board is a hit or miss
      * @param Board - players board to check
      * @param int row - row

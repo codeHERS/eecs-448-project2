@@ -1,6 +1,6 @@
 /**
- *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao)
- *   @date 9/19/19
+ *   @author CodeHERS
+ *   @date 
  *   @file Game.cpp
  *   @brief implemented methods needed for game play from header file
  */
@@ -24,7 +24,7 @@ Game::Game() {
   arrCol = 0;
   arrRow = 0;
 
-  
+
 
   m_p1oppBoard=new Board();
   m_p1ownBoard=new Board();
@@ -33,7 +33,7 @@ Game::Game() {
 
 
     m_currentPlayer=1;
-    
+
     //string variables for text in console
     letsPlay = "\n  _          _         _____  _             _ \n | |        | |       |  __ \\| |           | |\n | |     ___| |_ ___  | |__) | | __ _ _   _| |\n | |    / _ \\ __/ __| |  ___/| |/ _` | | | | |\n | |___|  __/ |_\\__ \\ | |    | | (_| | |_| |_|\n |______\\___|\\__|___/ |_|    |_|\\__,_|\\__, (_)\n                                       __/ |  \n                                      |___/   \n";
     p1Text = "\n  _____  _                          ____             \n |  __ \\| |                        / __ \\            \n | |__) | | __ _ _   _  ___ _ __  | |  | |_ __   ___ \n |  ___/| |/ _` | | | |/ _ \\ '__| | |  | | '_ \\ / _ \\\n | |    | | (_| | |_| |  __/ |    | |__| | | | |  __/\n |_|    |_|\\__,_|\\__, |\\___|_|     \\____/|_| |_|\\___|\n                  __/ |                              \n                 |___/                               \n";
@@ -84,7 +84,7 @@ void Game::setup(){
     string userRowString="";
     Board* currentPlayerBoard=nullptr;
     printBattleship();
-    
+
   //gets number of ships
   do{
       cout << "Enter the amount of ships both players want to use (Max: 5):  ";
@@ -107,10 +107,10 @@ void Game::setup(){
         }else{
             printPlayerTurn(2);
         }
-        
+
         switch (m_numShips) {
             case 1:
-                
+
                 cout << "Enter the coordinates for player "<<j<<"'s ship 1 (1x1): \n";
 
                 do{
@@ -123,7 +123,7 @@ void Game::setup(){
                 }while(userRowString!="1" && userRowString!="2" && userRowString!="3" && userRowString!="4" && userRowString!="5" && userRowString!="6" && userRowString!="7" && userRowString!="8");
                 userRow=stoi(userRowString);
                 arrRow=userRow-1;
-                
+
                 do{
                     cout << "Col (A-H): ";
                     cin >> userCol;
@@ -133,7 +133,7 @@ void Game::setup(){
                         std::cout<<"Invalid column. Must be A to H. Try again.\n";
                     }
                 }while(arrCol < 0 || arrCol > 7);
-                
+
                 userDirection="none";//set userDirection=none because ship of size 1 is only one point on the array
 
                 if(m_currentPlayer==1){
@@ -154,14 +154,14 @@ void Game::setup(){
                 break;
 
             case 2:
-                
+
                 for(int i=1; i<3; i++)
                 {
                     std::string shipString=to_string(i);
                     int shipNum=i;
 
                     shipPlacementInteraction(i, j, currentPlayerBoard);
-                    
+
                     if(m_currentPlayer==1)
                     {
                         if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
@@ -184,14 +184,14 @@ void Game::setup(){
                 break;
 
             case 3:
-                
+
                 for(int i=1; i<4; i++)
                 {
                     std::string shipString=to_string(i);
                     int shipNum=i;
-                    
+
                     shipPlacementInteraction(i, j, currentPlayerBoard);
-                    
+
                     if(m_currentPlayer==1)
                     {
                         if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
@@ -214,14 +214,14 @@ void Game::setup(){
                 break;
 
             case 4:
-                
+
                 for(int i=1; i<5; i++)
                 {
                     std::string shipString=to_string(i);
                     int shipNum=i;
-                    
+
                     shipPlacementInteraction(i, j, currentPlayerBoard);
-                    
+
                     if(m_currentPlayer==1)
                     {
                         if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
@@ -244,14 +244,14 @@ void Game::setup(){
                 break;
 
             case 5:
-                
+
                 for(int i=1; i<6; i++)
                 {
                     std::string shipString=to_string(i);
                     int shipNum=i;
-                    
+
                     shipPlacementInteraction(i, j, currentPlayerBoard);
-                    
+
                     if(m_currentPlayer==1)
                     {
                         if (isAvailable(m_p1ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p1ownBoard, arrRow, arrCol, shipNum, userDirection))
@@ -302,7 +302,7 @@ void Game::run(){
         endGame = false;
         break;
     }
-    
+
     //player 2 turn
     printPlayerTurn(2);
     p2Turn();
@@ -343,7 +343,7 @@ void Game::p1Turn(){
     }
     }
   //gets good input from the user
-  
+
   //checks if isHit() or not
   if(isHit(m_p2ownBoard, p1_attack_row, p1_attack_col)){
     cout << "That's a HIT!" << endl;
@@ -391,7 +391,7 @@ void Game::p2Turn(){
         }
 
     }
-    
+
     //hit or miss,
     if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
       cout << "That's a HIT!" << endl;
@@ -783,7 +783,7 @@ void Game::printCoordinateInteraction(Board* currentPlayerBoard, int shipNum){
         }while(userRowString!="1" && userRowString!="2" && userRowString!="3" && userRowString!="4" && userRowString!="5" && userRowString!="6" && userRowString!="7" && userRowString!="8");
         userRow=stoi(userRowString);
         arrRow=userRow-1;
-        
+
         do{
             cout << "Col (A-H): ";
             cin >> userCol;
@@ -793,7 +793,7 @@ void Game::printCoordinateInteraction(Board* currentPlayerBoard, int shipNum){
                 std::cout<<"Invalid column. Must be A to H. Try again.\n";
             }
         }while(arrCol < 0 || arrCol > 7);
-        
+
         if(!isAvailable(currentPlayerBoard, arrRow, arrCol)){
             cout<< "This coordinate has already been taken. Enter new coordinates:\n";
             keepAsking = true;
@@ -810,7 +810,7 @@ void Game::printCoordinateInteraction(Board* currentPlayerBoard, int shipNum){
 
 void Game::shipPlacementInteraction(int i, int j, Board* currentPlayerBoard){
     int shipNum=i;
-    
+
         if(m_currentPlayer==1)
         {
             currentPlayerBoard=m_p1ownBoard;
@@ -819,9 +819,9 @@ void Game::shipPlacementInteraction(int i, int j, Board* currentPlayerBoard){
         {
             currentPlayerBoard=m_p2ownBoard;
         }
-        
+
         cout<<"Enter the coordinates for player "<<j<<"'s ship "<<i<<" (1x"<<i<<")\n";
-        
+
         printCoordinateInteraction(currentPlayerBoard, shipNum);
 
         if(i>1)
@@ -831,7 +831,7 @@ void Game::shipPlacementInteraction(int i, int j, Board* currentPlayerBoard){
             if(checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "down")){ std::cout<<" down ";}
             if(checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "left")){ std::cout<<" left ";}
             if(checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, "right")){ std::cout<<" right ";}
-            
+
             do
             {
                 std::cout<<"\nIn which direction do you want the ship to be placed (up/down/left/right):";
@@ -850,7 +850,7 @@ void Game::shipPlacementInteraction(int i, int j, Board* currentPlayerBoard){
 
 void Game::printPlayerTurn(int player){
     clearConsole();
-    
+
     if(player==1){
         cout << p1Text << endl;
     } else {
@@ -859,4 +859,3 @@ void Game::printPlayerTurn(int player){
     cout << "Press any letter key then hit Enter to continue...";
     cin >> wait;
 }
-

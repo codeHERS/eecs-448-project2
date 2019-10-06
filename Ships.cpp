@@ -1,6 +1,6 @@
 /**
- *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao)
- *   @date 2019 09 20
+ *   @author CodeHERS
+ *   @date 
  *   @file Ships.cpp
  *   @brief implements methods in Ships.h
  */

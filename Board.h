@@ -1,7 +1,7 @@
 
 /**
- *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao)
- *   @date 9/16/19
+ *   @author CodeHERS
+ *   @date 
  *   @file Board.h
  *   @brief lists all methods for interacting with the game board
  */

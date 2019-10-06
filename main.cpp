@@ -1,6 +1,6 @@
 /**
- *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao)
- *   @date 9/20/19
+ *   @author CodeHERS
+ *   @date 
  *   @file main.cpp
  *   @brief calls game setup and run
  */
@@ -15,7 +15,7 @@ int main ()
   {
     game1.setup();
     game1.run();
-    
+
   }
   catch(std::runtime_error& rte)
   {
