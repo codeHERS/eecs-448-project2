@@ -10,11 +10,29 @@
 
 int main ()
 {
+string playWith;
+std::cout<<"\nDo you want to play with AI? (y/n)";
+std::cin>>playWith;
   Game game1;
   try
   {
+<<<<<<< HEAD
     game1.setup();
     game1.run();
+=======
+    if(playWith=="n")
+    {
+      game1.setup();
+      game1.run(false);
+    }
+
+    else
+    {
+      game1.setup_for_AI();
+      game1.run(true);
+
+    }
+>>>>>>> dccb516cbb8904df10bd243380f109823fb24257
 
   }
   catch(std::runtime_error& rte)
