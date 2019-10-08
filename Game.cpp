@@ -1,6 +1,6 @@
 /**
  *   @author CodeHERS
- *   @date 
+ *   @date
  *   @file Game.cpp
  *   @brief implemented methods needed for game play from header file
  */

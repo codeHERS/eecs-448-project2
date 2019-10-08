@@ -1,6 +1,6 @@
 /**
  *   @author CodeHERS
- *   @date 
+ *   @date
  *   @file main.cpp
  *   @brief calls game setup and run
  */

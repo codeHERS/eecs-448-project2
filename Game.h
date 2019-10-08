@@ -1,6 +1,6 @@
 /**
  *   @author CodeHERS
- *   @date 
+ *   @date
  *   @file Game.h
  *   @brief declares methods and member variables needed for game play
  */
