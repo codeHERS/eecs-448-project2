@@ -16,10 +16,6 @@ std::cin>>playWith;
   Game game1;
   try
   {
-<<<<<<< HEAD
-    game1.setup();
-    game1.run();
-=======
     if(playWith=="n")
     {
       game1.setup();
@@ -32,7 +28,6 @@ std::cin>>playWith;
       game1.run(true);
 
     }
->>>>>>> dccb516cbb8904df10bd243380f109823fb24257
 
   }
   catch(std::runtime_error& rte)

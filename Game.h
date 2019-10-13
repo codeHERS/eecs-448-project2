@@ -20,6 +20,8 @@ class Game{
   private:
     int m_numShips;
 
+    //int m_maxShips;
+
     int userRow;
     string userCol;
     string userDirection;
@@ -209,5 +211,7 @@ class Game{
     void setup_for_AI();
     void printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum);
     void p2Turn_AI_easy();
+    void p2Turn_AI_medium();
+    void p2Turn_AI_hard();
 };
 #endif

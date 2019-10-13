@@ -15,6 +15,7 @@
 #include <string>
 
 using namespace std;
+using namespace std;
 Game::Game() {
   m_numShips = 0;
 
@@ -311,7 +312,7 @@ void Game::run(bool check){
     }
     else
     {
-      p2Turn_AI_easy();
+      p2Turn_AI_hard();
     }
     //checks if player 2 has won
     if(m_p1Ships->allSunk()){
@@ -864,8 +865,6 @@ void Game::printPlayerTurn(int player){
     cout << "Press any letter key then hit Enter to continue...";
     cin >> wait;
 }
-<<<<<<< HEAD
-=======
 
 void Game::setup_for_AI()
 {
@@ -1063,6 +1062,7 @@ do{
       m_currentPlayer=2;
 	  }
 	  else
+
 	  {
 	    switch (m_numShips) {
 	        case 1:
@@ -1220,7 +1220,7 @@ void Game::printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum)
 
     do{
         keepAsking = false;
-        arrRow=rand()%7;
+         arrRow=rand()%7;
         arrCol = rand()%7;
 
         if(!isAvailable(currentPlayerBoard, arrRow, arrCol)){
@@ -1249,8 +1249,8 @@ void Game::p2Turn_AI_easy(){
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
 
     while(1){
-      p2_attack_row =rand()%7;
-      p2_attack_col = rand()%7;
+        p2_attack_row =rand()%7;
+        p2_attack_col = rand()%7;
       //std::cout<<"\nI'm YOOOO\n";
         if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
             //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
@@ -1283,4 +1283,56 @@ void Game::p2Turn_AI_easy(){
     cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
     cin>> wait;
 }
->>>>>>> dccb516cbb8904df10bd243380f109823fb24257
+
+void Game::p2Turn_AI_medium(){
+
+
+}
+
+void Game::p2Turn_AI_hard(){
+  string wait = "";
+  string shipNum_string;
+  int shipNum;
+  int i = 0;
+  int j = 0;
+
+  bool shipIsHit = false;
+
+      for(int col = 0; col < 8; col++)
+      {
+        for(int row = 0; row < 8; row++)
+        {
+            if(shipIsHit == false)
+            {
+              //checks for an spot to hit on p1 board
+              if(!(m_p1ownBoard->getEntryAtPosition(row, col) == " ") && !(m_p2oppBoard->getEntryAtPosition(row, col) == "H"))
+              {
+                    i = row;
+                    j= col;
+                    cout << "That's a HIT!" << endl;
+                    m_p2oppBoard->setEntryAtPosition("H",row, col);
+                    //prints board
+                    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+
+                    //decreases the opponents ship on hit and announces if sunk
+                    shipNum_string = m_p1ownBoard->getEntryAtPosition(row, col);
+
+                    shipNum = stoi(shipNum_string);
+                    m_p1Ships->decreaseSize(shipNum);
+                    shipIsHit = true;
+              }
+            }
+        }
+        if(m_p2oppBoard->getEntryAtPosition(i, j) == "H"){
+            break;
+          }
+
+      }
+      if(m_p1Ships->allSunk()){
+          return;
+      }
+
+  cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+  cin>> wait;
+
+}
