@@ -45,6 +45,9 @@ class Game{
     string p2Text;
     string wait;
 
+    bool stormWasUsedByP1;
+    bool stormWasUsedByP2;
+
   public:
 
     /**
@@ -213,5 +216,7 @@ class Game{
     void p2Turn_AI_easy();
     void p2Turn_AI_medium();
     void p2Turn_AI_hard();
+    void stormAffectingP1();
+    void stormAffectingP2();
 };
 #endif

@@ -25,7 +25,8 @@ Game::Game() {
   arrCol = 0;
   arrRow = 0;
 
-
+  stormWasUsedByP1=false;
+  stormWasUsedByP2=false;
 
   m_p1oppBoard=new Board();
   m_p1ownBoard=new Board();
@@ -338,7 +339,24 @@ void Game::p1Turn(){
   printPlayerBoards(m_p1ownBoard, m_p1oppBoard);
 
   cout << "It's time to attack!" << endl;
-
+  if(stormWasUsedByP1==true)
+  {
+    cout << "You used the storm already, keep playing. \n";
+  }else
+  {
+    cout << "Would you like to use the storm in this turn? (yes/no) \n";
+    string userUseStorm;
+    cin >> userUseStorm;
+    //ADD check for input......................................................
+    if(userUseStorm=="yes")
+    {
+      cout << "STORMMMM \n";
+      stormWasUsedByP1 = true;
+    }else
+    {
+      cout << "Okay, let's continue the game \n";
+    }
+  }
    while(1){
         p1_attack_row = getUserRow();
         p1_attack_col = getUserCol();
@@ -386,7 +404,24 @@ void Game::p2Turn(){
 
     //print Board
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
-
+    if(stormWasUsedByP2==true)
+    {
+      cout << "You used the storm already, keep playing. \n";
+    }else
+    {
+      cout << "Would you like to use the storm in this turn? (yes/no) \n";
+      string userUseStorm;
+      cin >> userUseStorm;
+      //ADD check for input......................................................
+      if(userUseStorm=="yes")
+      {
+        cout << "STORMMMM \n";
+        stormWasUsedByP2 = true;
+      }else
+      {
+        cout << "Okay, let's continue the game \n";
+      }
+    }
     while(1){
         p2_attack_row = getUserRow();
         p2_attack_col = getUserCol();
@@ -1334,5 +1369,14 @@ void Game::p2Turn_AI_hard(){
 
   cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
   cin>> wait;
+}
+
+void Game::stormAffectingP1(){
+
+
+}
+
+void Game::stormAffectingP2(){
+
 
 }
