@@ -350,7 +350,7 @@ void Game::p1Turn(){
     //ADD check for input......................................................
     if(userUseStorm=="yes")
     {
-      cout << "STORMMMM \n";
+      stormAffectingP2();
       stormWasUsedByP1 = true;
     }else
     {
@@ -1372,11 +1372,78 @@ void Game::p2Turn_AI_hard(){
 }
 
 void Game::stormAffectingP1(){
+  int i = 0;
+  int j = 0;
+  string shipNum_string;
+  int shipNum;
+  int randShipNum = rand()%m_numShips;
+  if(randShipNum==0){
+    randShipNum++;
+  }
+  string randShipNumString = to_string(randShipNum);
+    for(int col = 0; col < 8; col++)
+    {
+      for(int row = 0; row < 8; row++)
+      {
+        if((m_p1ownBoard->getEntryAtPosition(row, col) == randShipNumString))
+        {
+          i = row;
+          j = col;
+          cout << "STORM attack hit the other player's ship at "<< i+1 << char(65+j) << endl;
+          m_p2oppBoard->setEntryAtPosition("H",row, col);
 
+          //prints board
+          cout<< "Let's keep attacking" << endl;
+
+          shipNum_string = m_p1ownBoard->getEntryAtPosition(row, col);
+          shipNum = stoi(shipNum_string);
+          m_p1Ships->decreaseSize(shipNum);
+        }
+      }
+      if(m_p2oppBoard->getEntryAtPosition(i, j) == "H"){
+          break;
+        }
+    }
+    if(m_p1Ships->allSunk()){
+        return;
+    }
 
 }
 
 void Game::stormAffectingP2(){
+int i = 0;
+int j = 0;
+string shipNum_string;
+int shipNum;
+int randShipNum = rand()%m_numShips;
+if(randShipNum==0){
+  randShipNum++;
+}
+string randShipNumString = to_string(randShipNum);
+  for(int col = 0; col < 8; col++)
+  {
+    for(int row = 0; row < 8; row++)
+    {
+      if((m_p2ownBoard->getEntryAtPosition(row, col) == randShipNumString))
+      {
+        i = row;
+        j = col;
+        cout << "STORM attack hit the other player's ship at "<< i+1 << char(65+j) << endl;
+        m_p1oppBoard->setEntryAtPosition("H",row, col);
 
+        //prints board
+        cout<< "Let's keep attacking" << endl;
 
+        shipNum_string = m_p2ownBoard->getEntryAtPosition(row, col);
+        shipNum = stoi(shipNum_string);
+        m_p2Ships->decreaseSize(shipNum);
+      }
+    }
+    if(m_p1oppBoard->getEntryAtPosition(i, j) == "H"){
+        break;
+      }
+  }
+  if(m_p2Ships->allSunk()){
+      return;
+  }
 }
