@@ -40,6 +40,7 @@ Game::Game() {
     letsPlay = "\n  _          _         _____  _             _ \n | |        | |       |  __ \\| |           | |\n | |     ___| |_ ___  | |__) | | __ _ _   _| |\n | |    / _ \\ __/ __| |  ___/| |/ _` | | | | |\n | |___|  __/ |_\\__ \\ | |    | | (_| | |_| |_|\n |______\\___|\\__|___/ |_|    |_|\\__,_|\\__, (_)\n                                       __/ |  \n                                      |___/   \n";
     p1Text = "\n  _____  _                          ____             \n |  __ \\| |                        / __ \\            \n | |__) | | __ _ _   _  ___ _ __  | |  | |_ __   ___ \n |  ___/| |/ _` | | | |/ _ \\ '__| | |  | | '_ \\ / _ \\\n | |    | | (_| | |_| |  __/ |    | |__| | | | |  __/\n |_|    |_|\\__,_|\\__, |\\___|_|     \\____/|_| |_|\\___|\n                  __/ |                              \n                 |___/                               \n";
     p2Text = "\n  _____  _                         _______            \n |  __ \\| |                       |__   __|           \n | |__) | | __ _ _   _  ___ _ __     | |_      _____  \n |  ___/| |/ _` | | | |/ _ \\ '__|    | \\ \\ /\\ / / _ \\ \n | |    | | (_| | |_| |  __/ |       | |\\ V  V / (_) |\n |_|    |_|\\__,_|\\__, |\\___|_|       |_| \\_/\\_/ \\___/ \n                  __/ |                               \n                 |___/                                \n";
+    AIText = "  ______  _ \n |  __  || |\n | |__| || |\n |  __  || |\n | |  | || |\n |_|  |_||_|\n";
     wait = "";
 }
 
@@ -306,13 +307,15 @@ void Game::run(bool check){
     }
 
     //player 2 turn
-    printPlayerTurn(2);
+
     if(!check)
     {
+      printPlayerTurn(2);
       p2Turn();
     }
     else
     {
+      printPlayerTurn(3);
       p2Turn_AI_hard();
     }
     //checks if player 2 has won
@@ -910,8 +913,11 @@ void Game::printPlayerTurn(int player){
 
     if(player==1){
         cout << p1Text << endl;
-    } else {
+    } else if(player==2){
         cout << p2Text << endl;
+    }else
+    {
+      cout << AIText <<endl;
     }
     cout << "Press any letter key then hit Enter to continue...";
     cin >> wait;
