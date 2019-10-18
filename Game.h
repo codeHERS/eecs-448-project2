@@ -51,6 +51,7 @@ class Game{
     bool stormWasUsedByP1;
     bool stormWasUsedByP2;
 
+    bool playingAgainstAI;
   public:
 
     /**

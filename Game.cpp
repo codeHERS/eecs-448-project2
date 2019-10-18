@@ -109,7 +109,9 @@ void Game::setup(){
         if(j==1){
             printPlayerTurn(1);
         }else{
+          if(playingAgainstAI==false){
             printPlayerTurn(2);
+          }
         }
 
         switch (m_numShips) {
@@ -284,6 +286,7 @@ void Game::setup(){
 void Game::run(bool check){
     m_p1Ships = new Ships(m_numShips);
     m_p2Ships = new Ships(m_numShips);
+    playingAgainstAI = check;
   //start game
   system("clear");
 
@@ -321,7 +324,11 @@ void Game::run(bool check){
     }
     //checks if player 2 has won
     if(m_p1Ships->allSunk()){
+        if(playingAgainstAI==true){
+        printWinner(3);
+        }else{
         printWinner(2);
+        }
         endGame = false;
         break;
     }
@@ -955,7 +962,7 @@ do{
 	    if(j==1){
 	        printPlayerTurn(1);
 	    }else{
-	        printPlayerTurn(2);
+	        printPlayerTurn(3);
 	    }
 	    if(m_currentPlayer==1)
 	    {
