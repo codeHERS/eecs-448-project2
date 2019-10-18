@@ -82,6 +82,7 @@ std::string Game::convertStringToLower(string wordToConvert)
 }
 
 void Game::setup(){
+
     string numShipsString="";
     string userRowString="";
     Board* currentPlayerBoard=nullptr;
@@ -380,6 +381,7 @@ void Game::p1Turn(){
 
   //checks if isHit() or not
   if(isHit(m_p2ownBoard, p1_attack_row, p1_attack_col)){
+    system("afplay Hit.wav -t 3");
     cout << "That's a HIT!" << endl;
     m_p1oppBoard->setEntryAtPosition("H", p1_attack_col, p1_attack_row);
 
@@ -394,6 +396,7 @@ void Game::p1Turn(){
     //puts an x on the opponnets board
     m_p2ownBoard->setEntryAtPosition("X", p1_attack_col, p1_attack_row );
   }else{
+    system("afplay Miss.wav -t 2");
     cout << "That's a MISS! Better luck next time." << endl;
     m_p1oppBoard->setEntryAtPosition("M", p1_attack_col, p1_attack_row);
   }
@@ -452,6 +455,7 @@ void Game::p2Turn(){
 
     //hit or miss,
     if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
+      system("afplay Hit.wav -t 3");
       cout << "That's a HIT!" << endl;
       m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
 
@@ -466,6 +470,7 @@ void Game::p2Turn(){
         //puts an x on the opponnets board
         m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
     }else{
+      system("afplay Miss.wav -t 2");
       cout << "That's a MISS! Better luck next time." << endl;
       m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
     }

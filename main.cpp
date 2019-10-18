@@ -5,12 +5,28 @@
  *   @brief calls game setup and run
  */
 #include "Game.h"
+ //#include "sl.h"
+//#include <Mmsystem.h>
+//#include <mciapi.h>
+//these two headers are already included in the <Windows.h> header
+//#pragma comment(lib, "Winmm.lib")
+//#include <windows.h>
+//#pragma comment(lib,"Winmm.lib")
 #include <iostream>
 #include <string>
 
 int main ()
 {
+
+
 string playWith;
+//mciSendString("play wav wait", NULL, 0, NULL);
+//PlaySound("/Users/anjalipare/Documents/Decoding.wav", 0, 0);
+//cout << "Hello world!\7\a\7" << endl;
+/* create command to execute */
+//afplay /Users/anjalipare/Documents/Decoding.wav
+//system("afplay test.wav -t 2");
+system("afplay Start_game.wav -t 3");
 std::cout<<"\nDo you want to play with AI? (y/n)";
 std::cin>>playWith;
   Game game1;
