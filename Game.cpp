@@ -489,11 +489,14 @@ void Game::printWinner(int player){
 
   ifstream file_p1_wins ("player1wins.txt");
   ifstream file_p2_wins ("player2wins.txt");
+  ifstream file_ai_wins ("aiwins.txt");
 
   if(player == 1){
     cout << getFileContents (file_p1_wins) << endl;
   }else if(player == 2){
     cout << getFileContents(file_p2_wins) << endl;
+  }else if(player == 3){
+      cout << getFileContents(file_ai_wins) << endl;
   }
 }
 
