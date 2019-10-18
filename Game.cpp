@@ -1376,7 +1376,7 @@ void Game::stormAffectingP1(){
   int j = 0;
   string shipNum_string;
   int shipNum;
-  int randShipNum = rand()%m_numShips;
+  int randShipNum = rand()%m_numShips+1;
   if(randShipNum==0){
     randShipNum++;
   }
@@ -1415,7 +1415,7 @@ int i = 0;
 int j = 0;
 string shipNum_string;
 int shipNum;
-int randShipNum = rand()%m_numShips;
+int randShipNum = rand()%m_numShips+1;
 if(randShipNum==0){
   randShipNum++;
 }
