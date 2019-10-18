@@ -312,7 +312,7 @@ void Game::run(bool check){
     }
     else
     {
-      p2Turn_AI_hard();
+      p2Turn_AI_medium();
     }
     //checks if player 2 has won
     if(m_p1Ships->allSunk()){
@@ -1292,34 +1292,79 @@ void Game::p2Turn_AI_easy(){
 }
 
 void Game::p2Turn_AI_medium(){
-
   int p2_attack_row = 0;
   int p2_attack_col = 0;
+  //string p2_attack_col_string;
   string wait = "";
 
   string shipNum_string;
   int shipNum;
 
   //print Board
-  printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+  //printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
 
   while(1){
+    //srand (time(NULL));
+      p2_attack_row =rand()%7;
       p2_attack_col = rand()%7;
-      //std::cout<<"\nI'm YOOOO\n";
+    //std::cout<<"\nI'm YOOOO\n";
       if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
           //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
-      }
-      else{
+      }else{
           break;
       }
-      if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
-        cout << "That's a HIT!" << endl;
-        m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
-        break;
-      }
 
+  }
+  //hit or miss,
+  if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
+    //checks right
+    if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_row+1, p2_attack_col) == " "))
+    {
+      cout << "That's a HIT!" << endl;
+      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row+1);
     }
+    //checks up
+    else if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_row, p2_attack_col+1) == " "))
+    {
+      cout << "That's a HIT!" << endl;
+      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col+1, p2_attack_row);
+    }
+    //checks down
+    else if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_row, p2_attack_col-1) == " "))
+    {
+      cout << "That's a HIT!" << endl;
+      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col-1, p2_attack_row);
+    }
+    //checks left
+    else if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_row-1, p2_attack_col) == " "))
+    {
+      cout << "That's a HIT!" << endl;
+      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row-1);
+    }
+    else{
+      cout << "That's a HIT!" << endl;
+      printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
+      shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
+      shipNum = stoi(shipNum_string);
+      m_p1Ships->decreaseSize(shipNum);
+      if(m_p1Ships->allSunk()){
+          return;
+      }
+    }
+     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+      m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
+  }else{
+    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+    cout << "That's a MISS! Better luck next time." << endl;
+    m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
+  }
+
+  cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+  cin>> wait;
+
 }
+//}
 
 void Game::p2Turn_AI_hard(){
   string wait = "";
