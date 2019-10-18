@@ -1397,17 +1397,24 @@ void Game::stormAffectingP1(){
     randShipNum++;
   }
   string randShipNumString = to_string(randShipNum);
+  bool stormHit = false;
     for(int col = 0; col < 8; col++)
     {
       for(int row = 0; row < 8; row++)
       {
+        if(stormHit==true){
+          break;
+        }
         if((m_p1ownBoard->getEntryAtPosition(row, col) == randShipNumString))
         {
+          if(stormHit==true){
+            break;
+          }
           i = row;
           j = col;
-          cout << "STORM attack hit the other player's ship at "<< i+1 << char(65+j) << endl;
+          cout << "STORM attack hit the other player's ship at "<< j+1 << char(65+i) << endl;
           m_p2oppBoard->setEntryAtPosition("H",row, col);
-
+          stormHit = true;
           //prints board
           cout<< "Let's keep attacking" << endl;
 
@@ -1423,7 +1430,6 @@ void Game::stormAffectingP1(){
     if(m_p1Ships->allSunk()){
         return;
     }
-
 }
 
 void Game::stormAffectingP2(){
@@ -1451,7 +1457,7 @@ bool stormHit = false;
       {
         i = row;
         j = col;
-        cout << "STORM attack hit the other player's ship at "<< i+1 << char(65+j) << endl;
+        cout << "STORM attack hit the other player's ship at "<< j+1 << char(65+i) << endl;
         stormHit = true;
         m_p1oppBoard->setEntryAtPosition("H",row, col);
 
