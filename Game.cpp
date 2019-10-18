@@ -83,6 +83,7 @@ std::string Game::convertStringToLower(string wordToConvert)
 }
 
 void Game::setup(){
+
     string numShipsString="";
     string userRowString="";
     Board* currentPlayerBoard=nullptr;
@@ -383,6 +384,7 @@ void Game::p1Turn(){
 
   //checks if isHit() or not
   if(isHit(m_p2ownBoard, p1_attack_row, p1_attack_col)){
+    system("afplay Hit.wav -t 3");
     cout << "That's a HIT!" << endl;
     m_p1oppBoard->setEntryAtPosition("H", p1_attack_col, p1_attack_row);
 
@@ -397,6 +399,7 @@ void Game::p1Turn(){
     //puts an x on the opponnets board
     m_p2ownBoard->setEntryAtPosition("X", p1_attack_col, p1_attack_row );
   }else{
+    system("afplay Miss.wav -t 2");
     cout << "That's a MISS! Better luck next time." << endl;
     m_p1oppBoard->setEntryAtPosition("M", p1_attack_col, p1_attack_row);
   }
@@ -455,6 +458,7 @@ void Game::p2Turn(){
 
     //hit or miss,
     if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
+      system("afplay Hit.wav -t 3");
       cout << "That's a HIT!" << endl;
       m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
 
@@ -469,6 +473,7 @@ void Game::p2Turn(){
         //puts an x on the opponnets board
         m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
     }else{
+      system("afplay Miss.wav -t 2");
       cout << "That's a MISS! Better luck next time." << endl;
       m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
     }
@@ -1126,6 +1131,7 @@ do{
 	  {
 	    switch (m_numShips) {
 	        case 1:
+         // srand (time(NULL));
 	        arrRow=rand()%7;
 	        arrCol = rand()%7;
           std::cout<<"\nI'm herer\n";
@@ -1165,6 +1171,7 @@ do{
                   {
                     do
   	                {
+                      //  srand (time(NULL));
   	                    int index = rand()%4;
   	                    userDirection = arr_direction[index];
   	                }while((userDirection!="up" && userDirection!="down" && userDirection!="left" && userDirection!="right") || (checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, userDirection)==false));
@@ -1195,6 +1202,7 @@ do{
                   {
                     do
   	                {
+                      //  srand (time(NULL));
   	                    int index = rand()%4;
   	                    userDirection = arr_direction[index];
   	                }while((userDirection!="up" && userDirection!="down" && userDirection!="left" && userDirection!="right") || (checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, userDirection)==false));
@@ -1226,6 +1234,7 @@ do{
                   {
                     do
   	                {
+                      //  srand (time(NULL));
   	                    int index = rand()%4;
   	                    userDirection = arr_direction[index];
   	                }while((userDirection!="up" && userDirection!="down" && userDirection!="left" && userDirection!="right") || (checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, userDirection)==false));
@@ -1257,6 +1266,7 @@ do{
                   {
                     do
   	                {
+                      //  srand (time(NULL));
   	                    int index = rand()%4;
   	                    userDirection = arr_direction[index];
   	                }while((userDirection!="up" && userDirection!="down" && userDirection!="left" && userDirection!="right") || (checkUpDownLeftRight(currentPlayerBoard, arrRow, arrCol, shipNum, userDirection)==false));
@@ -1279,6 +1289,7 @@ void Game::printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum)
     bool keepAsking = false;
 
     do{
+        srand (time(NULL));
         keepAsking = false;
          arrRow=rand()%7;
         arrCol = rand()%7;
@@ -1309,6 +1320,7 @@ void Game::p2Turn_AI_easy(){
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
 
     while(1){
+      //srand (time(NULL));
         p2_attack_row =rand()%7;
         p2_attack_col = rand()%7;
       //std::cout<<"\nI'm YOOOO\n";
@@ -1346,7 +1358,32 @@ void Game::p2Turn_AI_easy(){
 
 void Game::p2Turn_AI_medium(){
 
+  int p2_attack_row = 0;
+  int p2_attack_col = 0;
+  string wait = "";
 
+  string shipNum_string;
+  int shipNum;
+
+  //print Board
+  printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+
+  while(1){
+      p2_attack_col = rand()%7;
+      //std::cout<<"\nI'm YOOOO\n";
+      if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
+          //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
+      }
+      else{
+          break;
+      }
+      if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
+        cout << "That's a HIT!" << endl;
+        m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
+        break;
+      }
+
+    }
 }
 
 void Game::p2Turn_AI_hard(){
