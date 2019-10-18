@@ -339,23 +339,32 @@ void Game::p1Turn(){
   printPlayerBoards(m_p1ownBoard, m_p1oppBoard);
 
   cout << "It's time to attack!" << endl;
+  //Storm addition
   if(stormWasUsedByP1==true)
   {
     cout << "You used the storm already, keep playing. \n";
   }else
   {
-    cout << "Would you like to use the storm in this turn? (yes/no) \n";
     string userUseStorm;
-    cin >> userUseStorm;
-    //ADD check for input......................................................
-    if(userUseStorm=="yes")
-    {
-      stormAffectingP2();
-      stormWasUsedByP1 = true;
-    }else
-    {
-      cout << "Okay, let's continue the game \n";
-    }
+    do{
+      cout << "Would you like to use the storm in this turn? (yes/no) \n";
+      cin >> userUseStorm;
+      //this checks for correct input
+      if(userUseStorm!="yes" && userUseStorm!="no")
+      {
+        cout<<"This input is invalid, please enter yes or no \n";
+      }
+    }while(userUseStorm!="yes" && userUseStorm!="no");
+
+      if(userUseStorm=="yes")
+      {
+        stormAffectingP2();
+        stormWasUsedByP1 = true;
+      }else
+      {
+        cout << "Okay, let's continue the game \n";
+      }
+
   }
    while(1){
         p1_attack_row = getUserRow();
@@ -409,13 +418,20 @@ void Game::p2Turn(){
       cout << "You used the storm already, keep playing. \n";
     }else
     {
-      cout << "Would you like to use the storm in this turn? (yes/no) \n";
       string userUseStorm;
-      cin >> userUseStorm;
-      //ADD check for input......................................................
+      do{
+        cout << "Would you like to use the storm in this turn? (yes/no) \n";
+        cin >> userUseStorm;
+        //this checks for correct input
+        if(userUseStorm!="yes" && userUseStorm!="no")
+        {
+          cout<<"This input is invalid, please enter yes or no \n";
+        }
+      }while(userUseStorm!="yes" && userUseStorm!="no");
+
       if(userUseStorm=="yes")
       {
-        cout << "STORMMMM \n";
+        stormAffectingP1();
         stormWasUsedByP2 = true;
       }else
       {
@@ -1420,18 +1436,25 @@ if(randShipNum==0){
   randShipNum++;
 }
 string randShipNumString = to_string(randShipNum);
+bool stormHit = false;
   for(int col = 0; col < 8; col++)
   {
+    if(stormHit==true){
+      break;
+    }
     for(int row = 0; row < 8; row++)
     {
+      if(stormHit==true){
+        break;
+      }
       if((m_p2ownBoard->getEntryAtPosition(row, col) == randShipNumString))
       {
         i = row;
         j = col;
         cout << "STORM attack hit the other player's ship at "<< i+1 << char(65+j) << endl;
+        stormHit = true;
         m_p1oppBoard->setEntryAtPosition("H",row, col);
 
-        //prints board
         cout<< "Let's keep attacking" << endl;
 
         shipNum_string = m_p2ownBoard->getEntryAtPosition(row, col);
