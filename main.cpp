@@ -14,6 +14,8 @@
 //#pragma comment(lib,"Winmm.lib")
 #include <iostream>
 #include <string>
+#include <iostream>
+#include <fstream>
 
 int main ()
 {
@@ -21,6 +23,7 @@ int main ()
 
 string playWith;
 string diffLevel;
+ifstream welcome ("welcome.txt");
 //mciSendString("play wav wait", NULL, 0, NULL);
 //PlaySound("/Users/anjalipare/Documents/Decoding.wav", 0, 0);
 //cout << "Hello world!\7\a\7" << endl;
@@ -28,13 +31,14 @@ string diffLevel;
 //afplay /Users/anjalipare/Documents/Decoding.wav
 //system("afplay test.wav -t 2");
 system("afplay Start_game.wav -t 3");
+  Game game1;
 do
 {
+  cout << game1.getFileContents (welcome) << endl;
   std::cout<<"\nDo you want to play with AI? (y/n): ";
   std::cin>>playWith;
 }while(playWith!="y" && playWith!="n");
 
-  Game game1;
   try
   {
     if(playWith=="n")
