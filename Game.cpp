@@ -13,6 +13,8 @@
 #include <fstream>
 #include <algorithm>
 #include <string>
+#include <time.h>
+#include <stdlib.h>
 
 using namespace std;
 using namespace std;
@@ -42,6 +44,7 @@ Game::Game() {
     p2Text = "\n  _____  _                         _______            \n |  __ \\| |                       |__   __|           \n | |__) | | __ _ _   _  ___ _ __     | |_      _____  \n |  ___/| |/ _` | | | |/ _ \\ '__|    | \\ \\ /\\ / / _ \\ \n | |    | | (_| | |_| |  __/ |       | |\\ V  V / (_) |\n |_|    |_|\\__,_|\\__, |\\___|_|       |_| \\_/\\_/ \\___/ \n                  __/ |                               \n                 |___/                                \n";
     AIText = "  ______  _ \n |  __  || |\n | |__| || |\n |  __  || |\n | |  | || |\n |_|  |_||_|\n";
     wait = "";
+    placingShipsAItext = "placing ships...\n";
 }
 
 Game::~Game()
@@ -941,9 +944,9 @@ void Game::printPlayerTurn(int player){
         cout << p1Text << endl;
     } else if(player==2){
         cout << p2Text << endl;
-    }else
-    {
+    }else{
       cout << AIText <<endl;
+
     }
     cout << "Press any letter key then hit Enter to continue...";
     cin >> wait;
@@ -973,7 +976,17 @@ do{
 	    if(j==1){
 	        printPlayerTurn(1);
 	    }else{
-	        printPlayerTurn(3);
+        clearConsole();
+        cout<<AIText<<endl;
+        //Placing ships text loop
+        int lengthText = placingShipsAItext.length();
+        for(int i=0;i<lengthText;i++){
+        cout<<placingShipsAItext[i];
+
+        }
+        cout<<endl;
+        cout << "Press any letter key then hit Enter to continue...";
+        cin >> wait;
 	    }
 	    if(m_currentPlayer==1)
 	    {
@@ -1167,7 +1180,7 @@ do{
 	                {
 	                addShiptoArray("1", arrRow, arrCol, userDirection, 2);
 	                std::cout<<"Player 2's current Board:\n";
-	                printOwnBoard(m_p2ownBoard);
+	                //printOwnBoard(m_p2ownBoard);
 	                }
 	            }
 	            break;
