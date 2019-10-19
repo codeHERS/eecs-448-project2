@@ -49,10 +49,10 @@ class Game{
     string wait;
     string placingShipsAItext;
 
-    bool stormWasUsedByP1;
-    bool stormWasUsedByP2;
+    bool stormWasUsedByP1; //added memeber variable to know storm status
+    bool stormWasUsedByP2; //added memeber variable to know storm status
 
-    bool playingAgainstAI;
+    bool playingAgainstAI; //memeber variable to know AI status
   public:
 
     /**
@@ -250,7 +250,21 @@ class Game{
      * @return
      */
     void p2Turn_AI_hard();
+
+    /**
+     * @pre function called by player two once in the game.
+     * @post definitive random hit to the other player's board
+     * @param
+     * @return
+     */
     void stormAffectingP1();
+
+    /**
+     * @pre function called by player one once in the game.
+     * @post definitive random hit to the other player's board
+     * @param
+     * @return
+     */
     void stormAffectingP2();
 };
 #endif

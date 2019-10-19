@@ -21,8 +21,11 @@ system("afplay Start_game.wav -t 3");
   Game game1;
 do
 {
+  //prints welcome message
   system("clear");
   cout << game1.getFileContents (welcome) << endl;
+
+  //play with AI options
   std::cout<<"\nDo you want to play with AI? (y/n): ";
   std::cin>>playWith;
 }while(playWith!="y" && playWith!="n");
