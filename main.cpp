@@ -34,6 +34,7 @@ system("afplay Start_game.wav -t 3");
   Game game1;
 do
 {
+  system("clear");
   cout << game1.getFileContents (welcome) << endl;
   std::cout<<"\nDo you want to play with AI? (y/n): ";
   std::cin>>playWith;
