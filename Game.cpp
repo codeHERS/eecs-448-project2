@@ -371,6 +371,9 @@ void Game::p1Turn(){
       {
         stormAffectingP2();
         stormWasUsedByP1 = true;
+        if(m_p2Ships->allSunk()){
+            return;
+        }
       }else
       {
         cout << "Okay, let's continue the game \n";
@@ -450,6 +453,9 @@ void Game::p2Turn(){
       {
         stormAffectingP1();
         stormWasUsedByP2 = true;
+        if(m_p1Ships->allSunk()){
+            return;
+        }
       }else
       {
         cout << "Okay, let's continue the game \n";
@@ -1518,7 +1524,7 @@ bool stormHit = false;
         cout << "STORM attack hit the other player's ship at "<< j+1 << char(65+i) << endl;
         stormHit = true;
         m_p1oppBoard->setEntryAtPosition("H",row, col);
-        
+
         shipNum_string = m_p2ownBoard->getEntryAtPosition(row, col);
         shipNum = stoi(shipNum_string);
         m_p2Ships->decreaseSize(shipNum);
