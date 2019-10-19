@@ -359,6 +359,7 @@ void Game::p1Turn(){
 
       if(userUseStorm=="yes")
       {
+        system("afplay Thunder.wav -t 3");
         stormAffectingP2();
         stormWasUsedByP1 = true;
       }else
@@ -1390,32 +1391,44 @@ void Game::p2Turn_AI_hard(){
       {
         for(int row = 0; row < 8; row++)
         {
+            //shipIsHit=false;
             if(shipIsHit == false)
             {
               //checks for an spot to hit on p1 board
-              if(!(m_p1ownBoard->getEntryAtPosition(row, col) == " ") && !(m_p2oppBoard->getEntryAtPosition(row, col) == "H"))
+              if(!(m_p1ownBoard->getEntryAtPosition(col, row) == " ") && (m_p2oppBoard->getEntryAtPosition(col, row) != "H"))
               {
                     i = row;
                     j= col;
                     cout << "That's a HIT!" << endl;
-                    m_p2oppBoard->setEntryAtPosition("H",row, col);
+                    m_p2oppBoard->setEntryAtPosition("H",col, row);
+
                     //prints board
                     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
 
                     //decreases the opponents ship on hit and announces if sunk
-                    shipNum_string = m_p1ownBoard->getEntryAtPosition(row, col);
+                    shipNum_string = m_p1ownBoard->getEntryAtPosition(col, row);
+                    std::cout<<shipNum_string;
+                    if(shipNum_string == " ")
+                    {
 
-                    shipNum = stoi(shipNum_string);
-                    m_p1Ships->decreaseSize(shipNum);
-                    shipIsHit = true;
+                    }
+                    else
+                    {
+                      shipNum = stoi(shipNum_string);
+                      m_p1Ships->decreaseSize(shipNum);
+                      m_p1ownBoard->setEntryAtPosition("X", col, row );
+                      shipIsHit = true;
+                    }
+                    if(shipIsHit==true)
+                    {
+                      goto theEnd;
+                    }
               }
             }
         }
-        if(m_p2oppBoard->getEntryAtPosition(i, j) == "H"){
-            break;
-          }
 
       }
+      theEnd:
       if(m_p1Ships->allSunk()){
           return;
       }
