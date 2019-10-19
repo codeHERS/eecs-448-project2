@@ -47,6 +47,7 @@ class Game{
     string p2Text;
     string AIText;
     string wait;
+    string placingShipsAItext;
 
     bool stormWasUsedByP1;
     bool stormWasUsedByP2;
