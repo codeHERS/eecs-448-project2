@@ -14,7 +14,8 @@
 #include <algorithm>
 #include <string>
 #include <time.h>
-#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h> // CHANGE
 
 using namespace std;
 using namespace std;
@@ -982,7 +983,8 @@ do{
         int lengthText = placingShipsAItext.length();
         for(int i=0;i<lengthText;i++){
         cout<<placingShipsAItext[i];
-
+        fflush(stdout);
+        sleep(1);
         }
         cout<<endl;
         cout << "Press any letter key then hit Enter to continue...";
