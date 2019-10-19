@@ -1,0 +1,612 @@
+\hypertarget{classGame}{}\section{Game Class Reference}
+\label{classGame}\index{Game@{Game}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGame_ad59df6562a58a614fda24622d3715b65}{Game} ()
+\item 
+\hyperlink{classGame_ae3d112ca6e0e55150d2fdbc704474530}{$\sim$\+Game} ()
+\item 
+void \hyperlink{classGame_abaeddb168166a7c6db3d7d82a6e160b5}{run} (bool check, string level)
+\item 
+void \hyperlink{classGame_ae4618ba40eabbbe65e35f1bb239aa29b}{setup} ()
+\item 
+void \hyperlink{classGame_a5d46e31df48c320c905bf23833e75bfd}{print\+Player\+Boards} (\hyperlink{classBoard}{Board} $\ast$own\+Board, \hyperlink{classBoard}{Board} $\ast$opp\+Board)
+\item 
+void \hyperlink{classGame_ac86bc812b7fc44720384167dbe56b964}{print\+Own\+Board} (\hyperlink{classBoard}{Board} $\ast$own\+Board)
+\item 
+int \hyperlink{classGame_a5f36a0e15d866f8ecf2f2d967a8e352b}{convert\+Col} (string col)
+\item 
+std\+::string \hyperlink{classGame_afc9a0a0e86c33685d5920cb27061f756}{convert\+String\+To\+Lower} (string word\+To\+Convert)
+\item 
+bool \hyperlink{classGame_ac5375584508e57a7172388b1d60ab5db}{is\+Available} (\hyperlink{classBoard}{Board} $\ast$board, int row, int col)
+\item 
+bool \hyperlink{classGame_a4e1607f0350c6c7d585059585777bf43}{check\+Up\+Down\+Left\+Right} (\hyperlink{classBoard}{Board} $\ast$board, int row, int col, int ship\+Num, string direction)
+\item 
+void \hyperlink{classGame_ab7dd82dc16ae4dee7031e43b761ffb36}{add\+Shipto\+Array} (string ship, int row, int col, std\+::string direction, int player)
+\item 
+void \hyperlink{classGame_a56decb134b379171d8c9d713cb761187}{print\+Battleship} ()
+\item 
+void \hyperlink{classGame_a0d8e7489f8a9a0080e4a1cb170462b55}{p1\+Turn} ()
+\item 
+void \hyperlink{classGame_a7e6bed36a3792fe78e94395de3924a2b}{p2\+Turn} ()
+\item 
+void \hyperlink{classGame_a9b3865147aa79dd24b2fec2dcd1326dd}{clear\+Console} ()
+\item 
+int \hyperlink{classGame_aa70d12c53416ed809104a7bd8274953c}{get\+User\+Row} ()
+\item 
+int \hyperlink{classGame_ab57a39bf1d9f48bdcc60acb5d598af22}{get\+User\+Col} ()
+\item 
+bool \hyperlink{classGame_a5e43c33da89e21b7a48ff2645e578a73}{is\+Hit} (\hyperlink{classBoard}{Board} $\ast$player\+Board, int row, int col)
+\item 
+void \hyperlink{classGame_aa8d9c78d73ff0c511c2602995e995993}{print\+Winner} (int player)
+\item 
+string \hyperlink{classGame_ac136d5eeb0d8aa650a0bb90a94abff46}{get\+File\+Contents} (ifstream \&File)
+\item 
+void \hyperlink{classGame_abd0b9e69475d3769fd4564ef1a611daf}{print\+Coordinate\+Interaction} (\hyperlink{classBoard}{Board} $\ast$current\+Player\+Board, int ship\+Num)
+\item 
+void \hyperlink{classGame_ac57ba0f34e5e9c3d555604e752be376b}{ship\+Placement\+Interaction} (int i, int j, \hyperlink{classBoard}{Board} $\ast$current\+Player\+Board)
+\item 
+void \hyperlink{classGame_afc66204a94ac13e910a4f371f9911e81}{print\+Player\+Turn} (int player)
+\item 
+void \hyperlink{classGame_ac80d671e53e3ed537fbf7a62d9d56f38}{setup\+\_\+for\+\_\+\+AI} ()
+\item 
+void \hyperlink{classGame_aa957777f94d7188d59c5bea045b1d52e}{print\+Coordinate\+Interaction\+\_\+\+AI} (\hyperlink{classBoard}{Board} $\ast$current\+Player\+Board, int ship\+Num)
+\item 
+void \hyperlink{classGame_ac4dac5ed617040076d0c1afbf3383857}{p2\+Turn\+\_\+\+A\+I\+\_\+easy} ()
+\item 
+void \hyperlink{classGame_af23dd6df0f894642f5b085fbf04615c2}{p2\+Turn\+\_\+\+A\+I\+\_\+medium} ()
+\item 
+void \hyperlink{classGame_a7649f2a88556628a0ff66eaf022be907}{p2\+Turn\+\_\+\+A\+I\+\_\+hard} ()
+\item 
+void \hyperlink{classGame_aa78cdcd5fd23c18f0791eda792624f06}{storm\+Affecting\+P1} ()
+\item 
+void \hyperlink{classGame_aa8be6f3ccad3ea9c05096f3aee6c3b89}{storm\+Affecting\+P2} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGame_ad59df6562a58a614fda24622d3715b65}\label{classGame_ad59df6562a58a614fda24622d3715b65}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+a game object is created with private member variables set to 0. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classGame_ae3d112ca6e0e55150d2fdbc704474530}\label{classGame_ae3d112ca6e0e55150d2fdbc704474530}} 
+\index{Game@{Game}!````~Game@{$\sim$\+Game}}
+\index{````~Game@{$\sim$\+Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{$\sim$\+Game()}{~Game()}}
+{\footnotesize\ttfamily Game\+::$\sim$\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a game object exists to delete 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+the game object is deallocated 
+\end{DoxyPostcond}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classGame_ab7dd82dc16ae4dee7031e43b761ffb36}\label{classGame_ab7dd82dc16ae4dee7031e43b761ffb36}} 
+\index{Game@{Game}!add\+Shipto\+Array@{add\+Shipto\+Array}}
+\index{add\+Shipto\+Array@{add\+Shipto\+Array}!Game@{Game}}
+\subsubsection{\texorpdfstring{add\+Shipto\+Array()}{addShiptoArray()}}
+{\footnotesize\ttfamily void Game\+::add\+Shipto\+Array (\begin{DoxyParamCaption}\item[{string}]{ship,  }\item[{int}]{row,  }\item[{int}]{col,  }\item[{std\+::string}]{direction,  }\item[{int}]{player }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+a ship is added to the board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em ship} & a string denoting the ship number that will be placed on the board \\
+\hline
+{\em row} & the user chosen initial row that the ship will be placed \\
+\hline
+{\em col} & the user chosen initial column that the ship will be placed \\
+\hline
+{\em direction} & the user chosen direction in which the ship will be placed \\
+\hline
+{\em player} & the player who\textquotesingle{}s board will be updated with a ship; used in \hyperlink{classGame_ae4618ba40eabbbe65e35f1bb239aa29b}{setup()} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a4e1607f0350c6c7d585059585777bf43}\label{classGame_a4e1607f0350c6c7d585059585777bf43}} 
+\index{Game@{Game}!check\+Up\+Down\+Left\+Right@{check\+Up\+Down\+Left\+Right}}
+\index{check\+Up\+Down\+Left\+Right@{check\+Up\+Down\+Left\+Right}!Game@{Game}}
+\subsubsection{\texorpdfstring{check\+Up\+Down\+Left\+Right()}{checkUpDownLeftRight()}}
+{\footnotesize\ttfamily bool Game\+::check\+Up\+Down\+Left\+Right (\begin{DoxyParamCaption}\item[{\hyperlink{classBoard}{Board} $\ast$}]{board,  }\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{ship\+Num,  }\item[{string}]{direction }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a board object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+checks if the given ship can be placed in the spaces it needs in the chosen direction (checks if the needed coordinates are empty) 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em board} & a board pointer pointing at the board you want to check a position in \\
+\hline
+{\em row} & the row of the coordinate you want to check \\
+\hline
+{\em col} & the col of the coordinate you want to chec \\
+\hline
+{\em ship\+Num} & the number of the ship that will be added to the board \\
+\hline
+{\em direction} & the direction in which the ship will be placed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns true if the ship can be placed on the board in the specified direction; false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a9b3865147aa79dd24b2fec2dcd1326dd}\label{classGame_a9b3865147aa79dd24b2fec2dcd1326dd}} 
+\index{Game@{Game}!clear\+Console@{clear\+Console}}
+\index{clear\+Console@{clear\+Console}!Game@{Game}}
+\subsubsection{\texorpdfstring{clear\+Console()}{clearConsole()}}
+{\footnotesize\ttfamily void Game\+::clear\+Console (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+clears the console and adds empty lines above so players can\textquotesingle{}t cheet 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a5f36a0e15d866f8ecf2f2d967a8e352b}\label{classGame_a5f36a0e15d866f8ecf2f2d967a8e352b}} 
+\index{Game@{Game}!convert\+Col@{convert\+Col}}
+\index{convert\+Col@{convert\+Col}!Game@{Game}}
+\subsubsection{\texorpdfstring{convert\+Col()}{convertCol()}}
+{\footnotesize\ttfamily int Game\+::convert\+Col (\begin{DoxyParamCaption}\item[{string}]{col }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+the user inputs a column letter 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+converts the user\textquotesingle{}s inputted column letter (A-\/H) to a number that will correspond to the board array column 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em col} & the letter the user inputs for the board column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the number that will correspond to the board array column 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_afc9a0a0e86c33685d5920cb27061f756}\label{classGame_afc9a0a0e86c33685d5920cb27061f756}} 
+\index{Game@{Game}!convert\+String\+To\+Lower@{convert\+String\+To\+Lower}}
+\index{convert\+String\+To\+Lower@{convert\+String\+To\+Lower}!Game@{Game}}
+\subsubsection{\texorpdfstring{convert\+String\+To\+Lower()}{convertStringToLower()}}
+{\footnotesize\ttfamily std\+::string Game\+::convert\+String\+To\+Lower (\begin{DoxyParamCaption}\item[{string}]{word\+To\+Convert }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a string is passed in 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+a word that is passed in is converted to all lowercase 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em word\+To\+Convert} & the word that will be converted to all lowercase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the parameter as a lowercase string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_ac136d5eeb0d8aa650a0bb90a94abff46}\label{classGame_ac136d5eeb0d8aa650a0bb90a94abff46}} 
+\index{Game@{Game}!get\+File\+Contents@{get\+File\+Contents}}
+\index{get\+File\+Contents@{get\+File\+Contents}!Game@{Game}}
+\subsubsection{\texorpdfstring{get\+File\+Contents()}{getFileContents()}}
+{\footnotesize\ttfamily string Game\+::get\+File\+Contents (\begin{DoxyParamCaption}\item[{ifstream \&}]{File }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a file exist the contains text 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+reads a txt file and prints the ascii art to the console 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em ifsteram\&} & File -\/ file to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string of the the ascii art 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_ab57a39bf1d9f48bdcc60acb5d598af22}\label{classGame_ab57a39bf1d9f48bdcc60acb5d598af22}} 
+\index{Game@{Game}!get\+User\+Col@{get\+User\+Col}}
+\index{get\+User\+Col@{get\+User\+Col}!Game@{Game}}
+\subsubsection{\texorpdfstring{get\+User\+Col()}{getUserCol()}}
+{\footnotesize\ttfamily int Game\+::get\+User\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets good input from the user of a spefic column 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_aa70d12c53416ed809104a7bd8274953c}\label{classGame_aa70d12c53416ed809104a7bd8274953c}} 
+\index{Game@{Game}!get\+User\+Row@{get\+User\+Row}}
+\index{get\+User\+Row@{get\+User\+Row}!Game@{Game}}
+\subsubsection{\texorpdfstring{get\+User\+Row()}{getUserRow()}}
+{\footnotesize\ttfamily int Game\+::get\+User\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets good input from the user of a spefic row 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_ac5375584508e57a7172388b1d60ab5db}\label{classGame_ac5375584508e57a7172388b1d60ab5db}} 
+\index{Game@{Game}!is\+Available@{is\+Available}}
+\index{is\+Available@{is\+Available}!Game@{Game}}
+\subsubsection{\texorpdfstring{is\+Available()}{isAvailable()}}
+{\footnotesize\ttfamily bool Game\+::is\+Available (\begin{DoxyParamCaption}\item[{\hyperlink{classBoard}{Board} $\ast$}]{board,  }\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a board object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+checks if a coordinate on the board is empty or not; used by Setup method 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em board} & a board pointer pointing at the board you want to check a position in \\
+\hline
+{\em row} & the row of the coordinate you want to check \\
+\hline
+{\em col} & the col of the coordinate you want to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns true if the position on the board is empty; false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a5e43c33da89e21b7a48ff2645e578a73}\label{classGame_a5e43c33da89e21b7a48ff2645e578a73}} 
+\index{Game@{Game}!is\+Hit@{is\+Hit}}
+\index{is\+Hit@{is\+Hit}!Game@{Game}}
+\subsubsection{\texorpdfstring{is\+Hit()}{isHit()}}
+{\footnotesize\ttfamily bool Game\+::is\+Hit (\begin{DoxyParamCaption}\item[{\hyperlink{classBoard}{Board} $\ast$}]{player\+Board,  }\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board contains ships 1,2,3,4,5. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+checks if a coordinate on a board is a hit or miss 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classBoard}{Board}} & -\/ players board to check \\
+\hline
+{\em int} & row -\/ row \\
+\hline
+{\em int} & col -\/ column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true for hit, false for miss 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a0d8e7489f8a9a0080e4a1cb170462b55}\label{classGame_a0d8e7489f8a9a0080e4a1cb170462b55}} 
+\index{Game@{Game}!p1\+Turn@{p1\+Turn}}
+\index{p1\+Turn@{p1\+Turn}!Game@{Game}}
+\subsubsection{\texorpdfstring{p1\+Turn()}{p1Turn()}}
+{\footnotesize\ttfamily void Game\+::p1\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board object exist 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints board to the screen and handles user input when its player 2\textquotesingle{}s turn 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a7e6bed36a3792fe78e94395de3924a2b}\label{classGame_a7e6bed36a3792fe78e94395de3924a2b}} 
+\index{Game@{Game}!p2\+Turn@{p2\+Turn}}
+\index{p2\+Turn@{p2\+Turn}!Game@{Game}}
+\subsubsection{\texorpdfstring{p2\+Turn()}{p2Turn()}}
+{\footnotesize\ttfamily void Game\+::p2\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints board to the screen and handles user input when its player 2\textquotesingle{}s turn 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_ac4dac5ed617040076d0c1afbf3383857}\label{classGame_ac4dac5ed617040076d0c1afbf3383857}} 
+\index{Game@{Game}!p2\+Turn\+\_\+\+A\+I\+\_\+easy@{p2\+Turn\+\_\+\+A\+I\+\_\+easy}}
+\index{p2\+Turn\+\_\+\+A\+I\+\_\+easy@{p2\+Turn\+\_\+\+A\+I\+\_\+easy}!Game@{Game}}
+\subsubsection{\texorpdfstring{p2\+Turn\+\_\+\+A\+I\+\_\+easy()}{p2Turn\_AI\_easy()}}
+{\footnotesize\ttfamily void Game\+::p2\+Turn\+\_\+\+A\+I\+\_\+easy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets the coordinates to randomly fire at a ship on the opponents board and performs necessary changes on the respective boards 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a7649f2a88556628a0ff66eaf022be907}\label{classGame_a7649f2a88556628a0ff66eaf022be907}} 
+\index{Game@{Game}!p2\+Turn\+\_\+\+A\+I\+\_\+hard@{p2\+Turn\+\_\+\+A\+I\+\_\+hard}}
+\index{p2\+Turn\+\_\+\+A\+I\+\_\+hard@{p2\+Turn\+\_\+\+A\+I\+\_\+hard}!Game@{Game}}
+\subsubsection{\texorpdfstring{p2\+Turn\+\_\+\+A\+I\+\_\+hard()}{p2Turn\_AI\_hard()}}
+{\footnotesize\ttfamily void Game\+::p2\+Turn\+\_\+\+A\+I\+\_\+hard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+This mode knows where all your ships are and lands a hit every turn 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_af23dd6df0f894642f5b085fbf04615c2}\label{classGame_af23dd6df0f894642f5b085fbf04615c2}} 
+\index{Game@{Game}!p2\+Turn\+\_\+\+A\+I\+\_\+medium@{p2\+Turn\+\_\+\+A\+I\+\_\+medium}}
+\index{p2\+Turn\+\_\+\+A\+I\+\_\+medium@{p2\+Turn\+\_\+\+A\+I\+\_\+medium}!Game@{Game}}
+\subsubsection{\texorpdfstring{p2\+Turn\+\_\+\+A\+I\+\_\+medium()}{p2Turn\_AI\_medium()}}
+{\footnotesize\ttfamily void Game\+::p2\+Turn\+\_\+\+A\+I\+\_\+medium (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+It fires randomly until it hit a ship then fires in orthogonally adjacent spaces to find other hits until a ship is sunk 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a56decb134b379171d8c9d713cb761187}\label{classGame_a56decb134b379171d8c9d713cb761187}} 
+\index{Game@{Game}!print\+Battleship@{print\+Battleship}}
+\index{print\+Battleship@{print\+Battleship}!Game@{Game}}
+\subsubsection{\texorpdfstring{print\+Battleship()}{printBattleship()}}
+{\footnotesize\ttfamily void Game\+::print\+Battleship (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPostcond}{Postcondition}
+prints the word battleship to the terminal screen 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classGame_abd0b9e69475d3769fd4564ef1a611daf}\label{classGame_abd0b9e69475d3769fd4564ef1a611daf}} 
+\index{Game@{Game}!print\+Coordinate\+Interaction@{print\+Coordinate\+Interaction}}
+\index{print\+Coordinate\+Interaction@{print\+Coordinate\+Interaction}!Game@{Game}}
+\subsubsection{\texorpdfstring{print\+Coordinate\+Interaction()}{printCoordinateInteraction()}}
+{\footnotesize\ttfamily void Game\+::print\+Coordinate\+Interaction (\begin{DoxyParamCaption}\item[{\hyperlink{classBoard}{Board} $\ast$}]{current\+Player\+Board,  }\item[{int}]{ship\+Num }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a board object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets the user\textquotesingle{}s coordinates to place a ship on the board and verifies input 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Player\+Board} & denotes the current player \\
+\hline
+{\em ship\+Num} & denotes the ship number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_aa957777f94d7188d59c5bea045b1d52e}\label{classGame_aa957777f94d7188d59c5bea045b1d52e}} 
+\index{Game@{Game}!print\+Coordinate\+Interaction\+\_\+\+AI@{print\+Coordinate\+Interaction\+\_\+\+AI}}
+\index{print\+Coordinate\+Interaction\+\_\+\+AI@{print\+Coordinate\+Interaction\+\_\+\+AI}!Game@{Game}}
+\subsubsection{\texorpdfstring{print\+Coordinate\+Interaction\+\_\+\+A\+I()}{printCoordinateInteraction\_AI()}}
+{\footnotesize\ttfamily void Game\+::print\+Coordinate\+Interaction\+\_\+\+AI (\begin{DoxyParamCaption}\item[{\hyperlink{classBoard}{Board} $\ast$}]{current\+Player\+Board,  }\item[{int}]{ship\+Num }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a board object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets the coordinates to randomly place a ship on the board for AI and verifies input 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Player\+Board} & denotes the current player \\
+\hline
+{\em ship\+Num} & denotes the ship number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_ac86bc812b7fc44720384167dbe56b964}\label{classGame_ac86bc812b7fc44720384167dbe56b964}} 
+\index{Game@{Game}!print\+Own\+Board@{print\+Own\+Board}}
+\index{print\+Own\+Board@{print\+Own\+Board}!Game@{Game}}
+\subsubsection{\texorpdfstring{print\+Own\+Board()}{printOwnBoard()}}
+{\footnotesize\ttfamily void Game\+::print\+Own\+Board (\begin{DoxyParamCaption}\item[{\hyperlink{classBoard}{Board} $\ast$}]{own\+Board }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a game object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+a player\textquotesingle{}s own board is printed to terminal 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em own\+Board} & a board pointer to the player\textquotesingle{}s own board \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a5d46e31df48c320c905bf23833e75bfd}\label{classGame_a5d46e31df48c320c905bf23833e75bfd}} 
+\index{Game@{Game}!print\+Player\+Boards@{print\+Player\+Boards}}
+\index{print\+Player\+Boards@{print\+Player\+Boards}!Game@{Game}}
+\subsubsection{\texorpdfstring{print\+Player\+Boards()}{printPlayerBoards()}}
+{\footnotesize\ttfamily void Game\+::print\+Player\+Boards (\begin{DoxyParamCaption}\item[{\hyperlink{classBoard}{Board} $\ast$}]{own\+Board,  }\item[{\hyperlink{classBoard}{Board} $\ast$}]{opp\+Board }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a game object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+boards are printed to the screen in order of opp board, then own board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em own\+Board} & a board pointer to the player\textquotesingle{}s own board \\
+\hline
+{\em opp\+Board} & a board pointer to the opponent\textquotesingle{}s board \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_afc66204a94ac13e910a4f371f9911e81}\label{classGame_afc66204a94ac13e910a4f371f9911e81}} 
+\index{Game@{Game}!print\+Player\+Turn@{print\+Player\+Turn}}
+\index{print\+Player\+Turn@{print\+Player\+Turn}!Game@{Game}}
+\subsubsection{\texorpdfstring{print\+Player\+Turn()}{printPlayerTurn()}}
+{\footnotesize\ttfamily void Game\+::print\+Player\+Turn (\begin{DoxyParamCaption}\item[{int}]{player }\end{DoxyParamCaption})}
+
+\begin{DoxyPostcond}{Postcondition}
+prints to screen which player\textquotesingle{}s turn it is 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & the current player \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_aa8d9c78d73ff0c511c2602995e995993}\label{classGame_aa8d9c78d73ff0c511c2602995e995993}} 
+\index{Game@{Game}!print\+Winner@{print\+Winner}}
+\index{print\+Winner@{print\+Winner}!Game@{Game}}
+\subsubsection{\texorpdfstring{print\+Winner()}{printWinner()}}
+{\footnotesize\ttfamily void Game\+::print\+Winner (\begin{DoxyParamCaption}\item[{int}]{player }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+the game is over, either player 1 or 2 wins 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints the winner to console 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em int} & player -\/ which play to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_abaeddb168166a7c6db3d7d82a6e160b5}\label{classGame_abaeddb168166a7c6db3d7d82a6e160b5}} 
+\index{Game@{Game}!run@{run}}
+\index{run@{run}!Game@{Game}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Game\+::run (\begin{DoxyParamCaption}\item[{bool}]{check,  }\item[{string}]{level }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a game object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+game play happens in this method 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classGame_ae4618ba40eabbbe65e35f1bb239aa29b}\label{classGame_ae4618ba40eabbbe65e35f1bb239aa29b}} 
+\index{Game@{Game}!setup@{setup}}
+\index{setup@{setup}!Game@{Game}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Game\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a game object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+each players\textquotesingle{} ships are placed on their respective boards 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classGame_ac80d671e53e3ed537fbf7a62d9d56f38}\label{classGame_ac80d671e53e3ed537fbf7a62d9d56f38}} 
+\index{Game@{Game}!setup\+\_\+for\+\_\+\+AI@{setup\+\_\+for\+\_\+\+AI}}
+\index{setup\+\_\+for\+\_\+\+AI@{setup\+\_\+for\+\_\+\+AI}!Game@{Game}}
+\subsubsection{\texorpdfstring{setup\+\_\+for\+\_\+\+A\+I()}{setup\_for\_AI()}}
+{\footnotesize\ttfamily void Game\+::setup\+\_\+for\+\_\+\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a game object exists. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\hyperlink{classShips}{Ships} for AI and player are placed on their respective boards 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classGame_ac57ba0f34e5e9c3d555604e752be376b}\label{classGame_ac57ba0f34e5e9c3d555604e752be376b}} 
+\index{Game@{Game}!ship\+Placement\+Interaction@{ship\+Placement\+Interaction}}
+\index{ship\+Placement\+Interaction@{ship\+Placement\+Interaction}!Game@{Game}}
+\subsubsection{\texorpdfstring{ship\+Placement\+Interaction()}{shipPlacementInteraction()}}
+{\footnotesize\ttfamily void Game\+::ship\+Placement\+Interaction (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\hyperlink{classBoard}{Board} $\ast$}]{current\+Player\+Board }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a board object exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+places ships on the board through the add\+Ship\+To\+Array function 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em i} & denotes ship number \\
+\hline
+{\em j} & denotes player number \\
+\hline
+{\em current\+Player\+Board} & denotes the current player \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_aa78cdcd5fd23c18f0791eda792624f06}\label{classGame_aa78cdcd5fd23c18f0791eda792624f06}} 
+\index{Game@{Game}!storm\+Affecting\+P1@{storm\+Affecting\+P1}}
+\index{storm\+Affecting\+P1@{storm\+Affecting\+P1}!Game@{Game}}
+\subsubsection{\texorpdfstring{storm\+Affecting\+P1()}{stormAffectingP1()}}
+{\footnotesize\ttfamily void Game\+::storm\+Affecting\+P1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+function called by player two once in the game. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+definitive random hit to the other player\textquotesingle{}s board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_aa8be6f3ccad3ea9c05096f3aee6c3b89}\label{classGame_aa8be6f3ccad3ea9c05096f3aee6c3b89}} 
+\index{Game@{Game}!storm\+Affecting\+P2@{storm\+Affecting\+P2}}
+\index{storm\+Affecting\+P2@{storm\+Affecting\+P2}!Game@{Game}}
+\subsubsection{\texorpdfstring{storm\+Affecting\+P2()}{stormAffectingP2()}}
+{\footnotesize\ttfamily void Game\+::storm\+Affecting\+P2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+function called by player one once in the game. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+definitive random hit to the other player\textquotesingle{}s board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Game_8h}{Game.\+h}\item 
+\hyperlink{Game_8cpp}{Game.\+cpp}\end{DoxyCompactItemize}
