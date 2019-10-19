@@ -45,11 +45,13 @@ class Game{
     string letsPlay;
     string p1Text;
     string p2Text;
+    string AIText;
     string wait;
 
     bool stormWasUsedByP1;
     bool stormWasUsedByP2;
 
+    bool playingAgainstAI;
   public:
 
     /**
