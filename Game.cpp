@@ -302,6 +302,7 @@ void Game::run(bool check){
     //checks if player 1 has won
     if(m_p2Ships->allSunk()){
         printWinner(1);
+        system("afplay End.wav -t 5");
         endGame = false;
         break;
     }
@@ -319,6 +320,7 @@ void Game::run(bool check){
     //checks if player 2 has won
     if(m_p1Ships->allSunk()){
         printWinner(2);
+        system("afplay End.wav -t 5");
         endGame = false;
         break;
     }
@@ -435,6 +437,7 @@ void Game::p2Turn(){
 
       if(userUseStorm=="yes")
       {
+        system("afplay Thunder.wav -t 3");
         stormAffectingP1();
         stormWasUsedByP2 = true;
       }else
@@ -495,8 +498,10 @@ void Game::printWinner(int player){
 
   if(player == 1){
     cout << getFileContents (file_p1_wins) << endl;
+    //system("afplay End.wav -t 5");
   }else if(player == 2){
     cout << getFileContents(file_p2_wins) << endl;
+    //system("afplay End.wav -t 5");
   }
 }
 
