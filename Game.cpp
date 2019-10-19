@@ -15,7 +15,7 @@
 #include <string>
 #include <time.h>
 #include <stdio.h>
-#include <unistd.h> // CHANGE
+#include <unistd.h>
 
 
 using namespace std;
@@ -47,7 +47,7 @@ Game::Game() {
     p2Text = "\n  _____  _                         _______            \n |  __ \\| |                       |__   __|           \n | |__) | | __ _ _   _  ___ _ __     | |_      _____  \n |  ___/| |/ _` | | | |/ _ \\ '__|    | \\ \\ /\\ / / _ \\ \n | |    | | (_| | |_| |  __/ |       | |\\ V  V / (_) |\n |_|    |_|\\__,_|\\__, |\\___|_|       |_| \\_/\\_/ \\___/ \n                  __/ |                               \n                 |___/                                \n";
     AIText = "  ______  _ \n |  __  || |\n | |__| || |\n |  __  || |\n | |  | || |\n |_|  |_||_|\n";
     wait = "";
-    placingShipsAItext = "placing ships...\n";
+    placingShipsAItext = "Placing ships...\n";
 }
 
 Game::~Game()
@@ -367,6 +367,8 @@ void Game::p1Turn(){
   cout << "It's time to attack!" << endl;
   //Storm addition
   string userUseStorm;
+
+  //checks if storm has been used before
   if(stormWasUsedByP1==true)
   {
     cout << "You used the storm already, keep playing. \n";
@@ -998,8 +1000,8 @@ do{
         for(int i=0;i<lengthText;i++){
         cout<<placingShipsAItext[i];
         fflush(stdout);
-        sleep(0.4);
-      }
+        sleep(1);
+        }
         cout<<endl;
         cout << "Press any letter key then hit Enter to continue...";
         cin >> wait;
@@ -1041,14 +1043,14 @@ do{
 	                std::cout<<"Player 1's current Board:\n";
 	                printOwnBoard(m_p1ownBoard);
 	                }
-	            }/*else{
+	            }else{
 	                if (isAvailable(m_p2ownBoard,arrRow, arrCol))
 	                {
 	                addShiptoArray("1", arrRow, arrCol, userDirection, 2);
 	                std::cout<<"Player 2's current Board:\n";
 	                printOwnBoard(m_p2ownBoard);
 	                }
-	            }*/
+	            }
 	            break;
 
 	        case 2:
@@ -1069,7 +1071,7 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-	                /*else
+	                else
 	                {
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
@@ -1077,7 +1079,7 @@ do{
 	                        std::cout<<"Player 2's current Board:\n";
 	                        printOwnBoard(m_p2ownBoard);
 	                    }
-	                }*/
+	                }
 	            }
 	            break;
 
@@ -1099,7 +1101,7 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-	                /*else
+	                else
 	                {
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
@@ -1107,7 +1109,7 @@ do{
 	                        std::cout<<"Player 2's current Board:\n";
 	                        printOwnBoard(m_p2ownBoard);
 	                    }
-	                }*/
+	                }
 	            }
 	            break;
 
@@ -1129,15 +1131,15 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-	                /*else
+	                else
 	                {
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
 	                        std::cout<<"Player 2's current Board:\n";
-	                        //printOwnBoard(m_p2ownBoard);
+	                        printOwnBoard(m_p2ownBoard);
 	                    }
-	                }*/
+	                }
 	            }
 	            break;
 
@@ -1159,7 +1161,7 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-	                /*else
+	                else
 	                {
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
@@ -1167,7 +1169,7 @@ do{
 	                        std::cout<<"Player 2's current Board:\n";
 	                        printOwnBoard(m_p2ownBoard);
 	                    }
-	                }*/
+	                }
 	            }
 	            break;
 	    }
@@ -1179,8 +1181,8 @@ do{
 	    switch (m_numShips) {
 	        case 1:
          // srand (time(NULL));
-	        arrRow=rand()%8;
-	        arrCol = rand()%8;
+	        arrRow=rand()%7;
+	        arrCol = rand()%7;
           std::cout<<"\nI'm herer\n";
 	            userDirection="none";//set userDirection=none because ship of size 1 is only one point on the array
 
@@ -1196,7 +1198,7 @@ do{
 	                {
 	                addShiptoArray("1", arrRow, arrCol, userDirection, 2);
 	                std::cout<<"Player 2's current Board:\n";
-	                printOwnBoard(m_p2ownBoard);
+	                //printOwnBoard(m_p2ownBoard);
 	                }
 	            }
 	            break;
@@ -1334,8 +1336,9 @@ do{
 void Game::printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum){
     string userRowString="";
     bool keepAsking = false;
-    srand (time(NULL));
+
     do{
+        srand (time(NULL));
         keepAsking = false;
          arrRow=rand()%7;
         arrCol = rand()%7;
@@ -1356,6 +1359,7 @@ void Game::p2Turn_AI_easy(){
 
     int p2_attack_row = 0;
     int p2_attack_col = 0;
+    //string p2_attack_col_string;
     string wait = "";
 
     string shipNum_string;
@@ -1366,8 +1370,9 @@ void Game::p2Turn_AI_easy(){
 
     while(1){
       //srand (time(NULL));
-        p2_attack_row =rand()%8;
-        p2_attack_col = rand()%8;
+        p2_attack_row =rand()%7;
+        p2_attack_col = rand()%7;
+      //std::cout<<"\nI'm YOOOO\n";
         if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
             //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
         }else{
@@ -1494,6 +1499,7 @@ void Game::stormAffectingP1(){
   string shipNum_string;
   int shipNum;
   int randShipNum = rand()%m_numShips+1;
+  //makes sure ship number is not 0
   if(randShipNum==0){
     randShipNum++;
   }
@@ -1513,6 +1519,7 @@ void Game::stormAffectingP1(){
           }
           i = row;
           j = col;
+          //lets the player know where the storm hit
           cout << "STORM attack hit the other player's ship at "<< j+1 << char(65+i) << endl;
           m_p2oppBoard->setEntryAtPosition("H",row, col);
 
@@ -1540,6 +1547,7 @@ int j = 0;
 string shipNum_string;
 int shipNum;
 int randShipNum = rand()%m_numShips+1;
+//makes sure shipnum is not 0
 if(randShipNum==0){
   randShipNum++;
 }
@@ -1559,6 +1567,7 @@ bool stormHit = false;
       {
         i = row;
         j = col;
+        //lets the player know where the storm hit
         cout << "STORM attack hit the other player's ship at "<< j+1 << char(65+i) << endl;
         stormHit = true;
         m_p1oppBoard->setEntryAtPosition("H",row, col);
