@@ -68,7 +68,7 @@ class Game{
      * @pre a game object exists
      * @post game play happens in this method
      */
-    void run(bool check);
+    void run(bool check, string level);
     /**
      * @pre a game object exists
      * @post each players' ships are placed on their respective boards

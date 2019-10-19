@@ -20,6 +20,7 @@ int main ()
 
 
 string playWith;
+string diffLevel;
 //mciSendString("play wav wait", NULL, 0, NULL);
 //PlaySound("/Users/anjalipare/Documents/Decoding.wav", 0, 0);
 //cout << "Hello world!\7\a\7" << endl;
@@ -27,21 +28,37 @@ string playWith;
 //afplay /Users/anjalipare/Documents/Decoding.wav
 //system("afplay test.wav -t 2");
 system("afplay Start_game.wav -t 3");
-std::cout<<"\nDo you want to play with AI? (y/n)";
-std::cin>>playWith;
+do
+{
+  std::cout<<"\nDo you want to play with AI? (y/n): ";
+  std::cin>>playWith;
+}while(playWith!="y" && playWith!="n");
+
   Game game1;
   try
   {
     if(playWith=="n")
     {
       game1.setup();
-      game1.run(false);
+      game1.run(false,0);
     }
 
     else
     {
+      /*while(!cin)
+      {
+        std::cout<<"\nChoose the difficulty level (1,2 or 3)";
+        cin.clear();
+        cin.ignore();
+        std::cin>>diffLevel;
+      }*/
+      do {
+        std::cout<<"\nChoose the difficulty level (1,2 or 3): ";
+        std::cin>>diffLevel;
+      }while(diffLevel!="1" && diffLevel!="2" && diffLevel!="3");
+
       game1.setup_for_AI();
-      game1.run(true);
+      game1.run(true, diffLevel);
 
     }
 

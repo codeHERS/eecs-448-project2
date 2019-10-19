@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <string>
 
+
 using namespace std;
 using namespace std;
 Game::Game() {
@@ -24,6 +25,7 @@ Game::Game() {
 
   arrCol = 0;
   arrRow = 0;
+
 
   stormWasUsedByP1=false;
   stormWasUsedByP2=false;
@@ -283,7 +285,7 @@ void Game::setup(){
     }
   }
 
-void Game::run(bool check){
+void Game::run(bool check, string level){
     m_p1Ships = new Ships(m_numShips);
     m_p2Ships = new Ships(m_numShips);
     playingAgainstAI = check;
@@ -321,12 +323,19 @@ void Game::run(bool check){
     else
     {
       printPlayerTurn(3);
-      p2Turn_AI_hard();
+      if(level == "1")
+        p2Turn_AI_easy();
+      else if (level == "2")
+        p2Turn_AI_medium();
+      else
+        p2Turn_AI_hard();
     }
     //checks if player 2 has won
     if(m_p1Ships->allSunk()){
         if(playingAgainstAI==true){
         printWinner(3);
+        system("afplay AIWin.wav");
+
         }else{
         printWinner(2);
         system("afplay End.wav -t 5");
@@ -522,12 +531,9 @@ void Game::printWinner(int player){
     //system("afplay End.wav -t 5");
   }else if(player == 2){
     cout << getFileContents(file_p2_wins) << endl;
-<<<<<<< HEAD
     //system("afplay End.wav -t 5");
-=======
   }else if(player == 3){
       cout << getFileContents(file_ai_wins) << endl;
->>>>>>> devel
   }
 }
 
@@ -1441,7 +1447,6 @@ void Game::p2Turn_AI_hard(){
 
                     //decreases the opponents ship on hit and announces if sunk
                     shipNum_string = m_p1ownBoard->getEntryAtPosition(col, row);
-                    std::cout<<shipNum_string;
                     if(shipNum_string == " ")
                     {
 
