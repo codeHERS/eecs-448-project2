@@ -39,6 +39,7 @@ void Ships::decreaseSize(int ship) {
 		  }
 			if(ship == 2) {
 				m_ship2--;
+				//std::cout<<"\nLENGTH:"<<m_ship2;
 			}
 			if(ship == 3) {
 				m_ship3--;

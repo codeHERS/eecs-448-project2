@@ -52,7 +52,16 @@ class Game{
     bool stormWasUsedByP1; //added memeber variable to know storm status
     bool stormWasUsedByP2; //added memeber variable to know storm status
 
-    bool playingAgainstAI; //memeber variable to know AI status
+
+    bool playingAgainstAI;
+    bool firstTurn=true;
+    int checkRow;
+    int checkCol;
+    std::string shipNum_string_test;
+    int SRow;//7
+    int SCol;//D
+    int length;
+
   public:
 
     /**
