@@ -1376,7 +1376,7 @@ void Game::p2Turn_AI_easy(){
     int shipNum;
 
     //print Board
-    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);//remove once done
+    
 
     while(1){
       //srand (time(NULL));
