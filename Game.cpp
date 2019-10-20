@@ -1074,16 +1074,6 @@ do{
 	                    }
 	                }
 
-	                /*else
-	                {
-	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
-	                    {
-	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
-	                    }
-	                }*/
-
 	            }
 	            break;
 
@@ -1105,16 +1095,6 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-
-	                /*else
-	                {
-	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
-	                    {
-	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
-	                    }
-	                }*/
 
 	            }
 	            break;
@@ -1138,15 +1118,6 @@ do{
 	                    }
 	                }
 
-	                /*else
-	                {
-	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
-	                    {
-	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        //printOwnBoard(m_p2ownBoard);
-	                    }
-	                }*/
 
 	            }
 	            break;
@@ -1169,16 +1140,6 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-
-	                /*else
-	                {
-	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
-	                    {
-	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
-	                    }
-	                }*/
 
 	            }
 	            break;
@@ -1206,7 +1167,6 @@ do{
 	                if (isAvailable(m_p2ownBoard,arrRow, arrCol))
 	                {
 	                addShiptoArray("1", arrRow, arrCol, userDirection, 2);
-	                std::cout<<"Player 2's current Board:\n";
 	                //printOwnBoard(m_p2ownBoard);
 	                }
 	            }
@@ -1237,8 +1197,6 @@ do{
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
 	                    }
 	            }
 	            break;
@@ -1269,8 +1227,6 @@ do{
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
 	                    }
 	            }
 	            break;
@@ -1300,8 +1256,6 @@ do{
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
 	                    }
 
 	            }
@@ -1332,8 +1286,6 @@ do{
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
 	                    }
 	            }
 	            break;
@@ -1463,7 +1415,6 @@ if(firstTurn==true)
   }
 
   //hit or miss,
-  std::cout<<p2_attack_row<<p2_attack_col;
   if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
 
     checkCol = p2_attack_col;
@@ -1472,7 +1423,7 @@ if(firstTurn==true)
     i=p2_attack_row;
 
     m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
-    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+
     //cout << "That's a HIT!" << endl;
     system("afplay Hit.wav -t 3");
     cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
@@ -1512,7 +1463,6 @@ if(firstTurn==true)
     j = p2_attack_col;
     i = p2_attack_row;
     m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
-    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
     //cout << "That's a MISS! Better luck next time." << endl;
     system("afplay Miss.wav -t 1");
     cout << "AI missed your ship at "<< i+1 << char(65+j) << endl;
@@ -1535,7 +1485,6 @@ if(firstTurn==true)
           i=checkRow;
           //checkRight=true;
           //medium->setEntryAtPosition("X", checkCol, checkRow);
-          printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
           m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
           m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
           system("afplay Hit.wav -t 3");
@@ -1568,7 +1517,6 @@ if(firstTurn==true)
           j=checkCol;
           i=checkRow;
           //medium->setEntryAtPosition("X", checkCol, checkRow);
-          printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
           m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
           m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
           system("afplay Hit.wav -t 3");
@@ -1601,7 +1549,6 @@ if(firstTurn==true)
           j=checkCol;
           i=checkRow;
           //medium->setEntryAtPosition("X", checkCol, checkRow);
-          printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
 
           m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
           m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
@@ -1643,7 +1590,6 @@ if(firstTurn==true)
           checkCol--;
           j=checkCol;
           i=checkRow;
-          printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
           m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
           m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
           //std::cout<<"\nHit";
@@ -1713,7 +1659,6 @@ void Game::p2Turn_AI_hard(){
                     m_p2oppBoard->setEntryAtPosition("H",col, row);
 
                     //prints board
-                    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);//delete when done working
 
                     //decreases the opponents ship on hit and announces if sunk
                     system("afplay Hit.wav -t 3");
