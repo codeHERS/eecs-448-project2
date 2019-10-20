@@ -63,25 +63,49 @@ How was work split?
 
 The project we recieved was working well and was split into useful classes, so we did not need to add any additional classes.
 For our contribution to this project, we added an AI, a Storm feature, and Sound effects. We split the work as fair as we could taking
-in consideration that we had one team memeber who left for a conference for a week, and another team member who was sick at the start of
-the project. Anjali and Sindhu worked mainly on the AI functionality. Sindhu worked on the Medium AI, and Anjali did the Easy and Hard AI.
-Victoria added some "graphics" to the terminal with realtion to the AI following the other team's style. Anjali worked on sound features,
-she added all the sounds that are activated with different actions in the game. Victoria worked mainly on the Storm feature functionality.
-We also all gave ideas, approved sounds, and helped each other with things realted to git and segfaults. 
+in consideration that we had one team memeber who left for a conference for a week, and another team member who was sick at the start 
+of the project. Anjali and Sindhu worked mainly on the AI functionality. Sindhu worked on the Medium AI and Hard AI, and Anjali did 
+the EasyAI and the placing of the ships. Victoria added some "graphics" to the terminal with realtion to the AI following the other 
+team's style. Anjali worked on sound features, she added all the sounds that are activated with different actions in the game. 
+Victoria worked mainly on the Storm feature functionality and did the doxygen documentation. We also all gave ideas, approved sounds,
+and helped each other with thingsrealted to git and segfaults. 
 
 ____________________________________________________________________________________________________________
-Challenges
+Challenges:
 
+Understanding the other team's code was the first callenge we faced. It was hard to understand the classes and all the relationships 
+between them and the methods. However, the other team did a really good job in organizing their code and we were able to understand 
+the program in a few days.
+
+We also experienced a lot of small inconveniences as a team like a team member traveling for a week and another team memeber getting
+sick for a few days. These challenges affected our work only because we could not meet in person or work as much as we wanted to.
+
+ANother challenge we experienced, and probably a lot of people in the class did, was that fall break was in the middle of the project
+and some team members traveled, so we had to work remotely and communicate via Slack. Also, the midterm season was a challenge because
+we had to manage the time to work on this project while also studying for our exams. At the end, our lack of time did not affect our
+outcome because we were able to finish and add every feature we wanted.
+
+At the start of the project, our team wanted to implement a Graphic User Interface to the terminal based project. We tried to reseaarch
+good but easy libraries to use, but we could not do so because of our lack of experience with GUIs. At the end, we decided that it
+would be better to just add sounds to the project because adding a GUI to an already strong and well developed terminal based program
+would be really hard.
+
+The last challenge we faced was the implementation of the medium AI. Our team has started working on it since the first week, but the
+logic of it was just hard to implement. At the end, we worked as a team to figure out the bugs and fix them.
 
 
 ____________________________________________________________________________________________________________
-Features that did not make it to the demo
+Features that did not make it to the demo:
 
-
-
+As a team, we were able to implement everything everything we wanted and mentioned to Dr. Gibbons. The only feature we would have
+liked to have was the GUI. We replaced this feature with sound effects, which was also a good addition to the project at the end.
 
 ____________________________________________________________________________________________________________
-Things we would have done differently
+Things we would have done differently:
+
+If we had more time and would have organized ourselves better, we would have liked to have a working Graphic User Interface. As a team,
+we feel that we did not put enough effort to research about different GUI libraries and how to use them, so we were not able to implement
+it.
 
 
 
