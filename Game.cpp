@@ -1351,7 +1351,6 @@ void Game::p2Turn_AI_easy(){
       //std::cout<<j<<i;
 
       m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
-      printPlayerBoards(m_p2ownBoard, m_p2oppBoard);//remove once done
       system("afplay Hit.wav -t 3");
       cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
 
@@ -1372,7 +1371,6 @@ void Game::p2Turn_AI_easy(){
       //std::cout<<j<<i;
 
       m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
-      printPlayerBoards(m_p2ownBoard, m_p2oppBoard);//remove once done
       system("afplay Miss.wav -t 1");
       cout << "AI missed your ship at "<< i+1 << char(65+j) << endl;
 
