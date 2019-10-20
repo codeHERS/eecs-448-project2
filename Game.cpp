@@ -1466,10 +1466,6 @@ if(firstTurn==true)
   std::cout<<p2_attack_row<<p2_attack_col;
   if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
 
-    bool checkRight = false;
-    bool checkLeft = false;
-    bool checkUp = false;
-    bool checkDown = false;
     checkCol = p2_attack_col;
     checkRow = p2_attack_row;
     j=p2_attack_col;
@@ -1513,6 +1509,8 @@ if(firstTurn==true)
     cin>> wait;
   }
   else{
+    j = p2_attack_col;
+    i = p2_attack_row;
     m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
     //cout << "That's a MISS! Better luck next time." << endl;
