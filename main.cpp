@@ -45,7 +45,7 @@ do
     if(playWith=="n")
     {
       game1.setup();
-      game1.run(false,0);
+      game1.run(false,"0");
     }
 
     else
@@ -63,7 +63,7 @@ do
       }while(diffLevel!="1" && diffLevel!="2" && diffLevel!="3");
 
       game1.setup_for_AI();
-      game1.run(true, diffLevel);
+      game1.run(true,diffLevel);
 
     }
 
