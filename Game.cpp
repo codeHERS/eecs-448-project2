@@ -1381,6 +1381,8 @@ void Game::p2Turn_AI_easy(){
 void Game::p2Turn_AI_medium(){
   int p2_attack_row = 0;
   int p2_attack_col = 0;
+  int i = 0;
+  int j = 0;
   //string p2_attack_col_string;
 
   string wait = "";
@@ -1417,10 +1419,14 @@ if(firstTurn==true)
     bool checkDown = false;
     checkCol = p2_attack_col;
     checkRow = p2_attack_row;
+    j=p2_attack_col;
+    i=p2_attack_row;
 
     m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
-    cout << "That's a HIT!" << endl;
+    //cout << "That's a HIT!" << endl;
+    system("afplay Hit.wav -t 3");
+    cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
     shipNum_string = m_p1ownBoard->getEntryAtPosition(checkCol, checkRow);
     shipNum = stoi(shipNum_string);
     if(shipNum==1)
@@ -1430,6 +1436,8 @@ if(firstTurn==true)
           if(m_p1Ships->allSunk()){
               return;
           }
+          cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+          cin>> wait;
           return;
     }
     length=shipNum;
@@ -1448,11 +1456,17 @@ if(firstTurn==true)
     //checkCol = p2_attack_col;
     //shipNum_string = m_p2ownBoard->getEntryAtPosition(row, col);
     firstTurn = false;
+    cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+    cin>> wait;
   }
   else{
     m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
-    cout << "That's a MISS! Better luck next time." << endl;
+    //cout << "That's a MISS! Better luck next time." << endl;
+    system("afplay Miss.wav -t 1");
+    cout << "AI missed your ship at "<< i+1 << char(65+j) << endl;
+    cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+    cin>> wait;
   }
 }
 
@@ -1466,11 +1480,15 @@ if(firstTurn==true)
         {
           //std::cout<<"\nHitRi";
           checkCol++;
+          j=checkCol;
+          i=checkRow;
           //checkRight=true;
           //medium->setEntryAtPosition("X", checkCol, checkRow);
           printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
           m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
           m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
+          system("afplay Hit.wav -t 3");
+          cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
           shipNum = stoi(shipNum_string_test);
           length--;
           m_p1Ships->decreaseSize(shipNum);
@@ -1482,9 +1500,13 @@ if(firstTurn==true)
             //SRow = 7;//8
             //SCol = 0;//a
             firstTurn=true;
+            cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+            cin>> wait;
             //std::cout<<"this is what is first turn:"<<firstTurn;
             return;
           }
+          cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+          cin>> wait;
           return;
 
         }
@@ -1492,10 +1514,14 @@ if(firstTurn==true)
         {
           //std::cout<<"\nHitDo";
           checkRow++;
+          j=checkCol;
+          i=checkRow;
           //medium->setEntryAtPosition("X", checkCol, checkRow);
           printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
           m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
           m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
+          system("afplay Hit.wav -t 3");
+          cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
           shipNum = stoi(shipNum_string_test);
           length--;
           m_p1Ships->decreaseSize(shipNum);
@@ -1507,9 +1533,13 @@ if(firstTurn==true)
             //SRow = 7;
             //SCol = 0;
             firstTurn=true;
+            cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+            cin>> wait;
             //std::cout<<"this is what is first turn:"<<firstTurn;
             return;
           }
+          cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+          cin>> wait;
           return;
         }
 
@@ -1517,12 +1547,16 @@ if(firstTurn==true)
         {
           //std::cout<<"\nHitUP";
           checkRow--;
+          j=checkCol;
+          i=checkRow;
           //medium->setEntryAtPosition("X", checkCol, checkRow);
           printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
 
           m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
           m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
           //std::cout<<"\nHitLe";
+          system("afplay Hit.wav -t 3");
+          cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
           shipNum = stoi(shipNum_string_test);
           length--;
           m_p1Ships->decreaseSize(shipNum);
@@ -1533,6 +1567,8 @@ if(firstTurn==true)
           {
             //SRow = 7;
             //SCol = 0;
+            cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+            cin>> wait;
             firstTurn=true;
             //std::cout<<"this is what is first turn:"<<firstTurn;
             return;
@@ -1545,6 +1581,8 @@ if(firstTurn==true)
             std::cout<<"this is what is first turn:"<<firstTurn;
             return;
           }*/
+          cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+          cin>> wait;
           return;
 
         }
@@ -1552,10 +1590,14 @@ if(firstTurn==true)
         {
           //std::cout<<"\nHitRi";
           checkCol--;
+          j=checkCol;
+          i=checkRow;
           printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
           m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
           m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
-          std::cout<<"\nHit";
+          //std::cout<<"\nHit";
+          system("afplay Hit.wav -t 3");
+          cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
           shipNum = stoi(shipNum_string_test);
           length--;
           m_p1Ships->decreaseSize(shipNum);
@@ -1566,10 +1608,14 @@ if(firstTurn==true)
           {
             //SRow = 7;
             //SCol = 0;
+            cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+            cin>> wait;
             firstTurn=true;
             //std::cout<<"this is what is first turn:"<<firstTurn;
             return;
           }
+          cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
+          cin>> wait;
           return;
 
         }
