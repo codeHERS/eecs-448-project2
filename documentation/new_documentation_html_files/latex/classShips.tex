@@ -1,0 +1,127 @@
+\hypertarget{classShips}{}\section{Ships Class Reference}
+\label{classShips}\index{Ships@{Ships}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classShips_aabbca77f901e307950267b22383be013}{Ships} (int num\+Ships)
+\item 
+void \hyperlink{classShips_ad77281b5c68f9fcc7583c6766f2aac3f}{decrease\+Size} (int ship)
+\item 
+bool \hyperlink{classShips_a06a243e4251ffef7461eefff4d69e512}{is\+Sunk} (int ship)
+\item 
+bool \hyperlink{classShips_a401ed503f23bb11e6707a687ad831b62}{all\+Sunk} ()
+\item 
+void \hyperlink{classShips_aaf0177a1d238c8d6f169c1476072e440}{announce} (int ship)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classShips_aabbca77f901e307950267b22383be013}\label{classShips_aabbca77f901e307950267b22383be013}} 
+\index{Ships@{Ships}!Ships@{Ships}}
+\index{Ships@{Ships}!Ships@{Ships}}
+\subsubsection{\texorpdfstring{Ships()}{Ships()}}
+{\footnotesize\ttfamily Ships\+::\+Ships (\begin{DoxyParamCaption}\item[{int}]{num\+Ships }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+initializes ships 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Ships} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classShips_a401ed503f23bb11e6707a687ad831b62}\label{classShips_a401ed503f23bb11e6707a687ad831b62}} 
+\index{Ships@{Ships}!all\+Sunk@{all\+Sunk}}
+\index{all\+Sunk@{all\+Sunk}!Ships@{Ships}}
+\subsubsection{\texorpdfstring{all\+Sunk()}{allSunk()}}
+{\footnotesize\ttfamily bool Ships\+::all\+Sunk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\hyperlink{classShips_aabbca77f901e307950267b22383be013}{Ships(int num\+Ships)} must have been called 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+returns true if all ships are sunk and false otherwise 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if size of all ships $>$= 0, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classShips_aaf0177a1d238c8d6f169c1476072e440}\label{classShips_aaf0177a1d238c8d6f169c1476072e440}} 
+\index{Ships@{Ships}!announce@{announce}}
+\index{announce@{announce}!Ships@{Ships}}
+\subsubsection{\texorpdfstring{announce()}{announce()}}
+{\footnotesize\ttfamily void Ships\+::announce (\begin{DoxyParamCaption}\item[{int}]{ship }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\hyperlink{classShips_aabbca77f901e307950267b22383be013}{Ships(int num\+Ships)}must have been called 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+couts to terminal when a ship has been sunk, and which ship it was 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em int} & ship is the number of the ship, equivalent to its original size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classShips_ad77281b5c68f9fcc7583c6766f2aac3f}\label{classShips_ad77281b5c68f9fcc7583c6766f2aac3f}} 
+\index{Ships@{Ships}!decrease\+Size@{decrease\+Size}}
+\index{decrease\+Size@{decrease\+Size}!Ships@{Ships}}
+\subsubsection{\texorpdfstring{decrease\+Size()}{decreaseSize()}}
+{\footnotesize\ttfamily void Ships\+::decrease\+Size (\begin{DoxyParamCaption}\item[{int}]{ship }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\hyperlink{classShips_aabbca77f901e307950267b22383be013}{Ships(int num\+Ships)} must have been called 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+decreases \char`\"{}size\char`\"{} which is essentially the health of a ship 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em int} & ship is the number of the ship, equivalent to its original size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classShips_a06a243e4251ffef7461eefff4d69e512}\label{classShips_a06a243e4251ffef7461eefff4d69e512}} 
+\index{Ships@{Ships}!is\+Sunk@{is\+Sunk}}
+\index{is\+Sunk@{is\+Sunk}!Ships@{Ships}}
+\subsubsection{\texorpdfstring{is\+Sunk()}{isSunk()}}
+{\footnotesize\ttfamily bool Ships\+::is\+Sunk (\begin{DoxyParamCaption}\item[{int}]{ship }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\hyperlink{classShips_aabbca77f901e307950267b22383be013}{Ships(int num\+Ships)} must have been called 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+returns true if size of given ship is 0; also couts a sunk message 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em int} & ship is the number of the ship, equivalent to its original size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if size is 0, false if size is not 0 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Ships_8h}{Ships.\+h}\item 
+\hyperlink{Ships_8cpp}{Ships.\+cpp}\end{DoxyCompactItemize}
