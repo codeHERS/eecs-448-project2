@@ -57,8 +57,8 @@ class Game{
     int checkRow;
     int checkCol;
     std::string shipNum_string_test;
-    int SRow = 6;//7
-    int SCol = 3;//D
+    int SRow;//7
+    int SCol;//D
     int length;
   public:
 

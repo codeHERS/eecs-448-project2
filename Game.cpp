@@ -1392,10 +1392,10 @@ if(firstTurn==true)
 {
   while(1){
     //srand (time(NULL));
-      p2_attack_row =rand()%8;
-      p2_attack_col = rand()%8;
-      //p2_attack_row = SRow;
-      //p2_attack_col = SCol;
+      //p2_attack_row =rand()%8;
+      //p2_attack_col = rand()%8;
+      p2_attack_row = 0;
+      p2_attack_col = 0;
       checkCol = p2_attack_col;
       checkRow= p2_attack_row;
     //std::cout<<"\nI'm YOOOO\n";
@@ -1422,10 +1422,17 @@ if(firstTurn==true)
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
     cout << "That's a HIT!" << endl;
     shipNum_string = m_p1ownBoard->getEntryAtPosition(checkCol, checkRow);
+    m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
+    //printOwnBoard(m_p1ownBoard);
     shipNum = stoi(shipNum_string);
+    m_p1Ships->decreaseSize(shipNum);
     length=shipNum;
     length--;
-    m_p1Ships->decreaseSize(shipNum);
+    if (length==0)
+    {
+      return;
+    }
+
         if(m_p1Ships->allSunk()){
             return;
         }
@@ -1452,7 +1459,7 @@ if(firstTurn==true)
       //std::cout<<"\nYes I rock";
       while(!m_p1Ships->allSunk())
       {
-        if((checkCol+1 < 9) && (m_p1ownBoard->getEntryAtPosition(checkCol+1, checkRow) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol+1, checkRow)!="X"))
+        if((checkCol+1 < 8) && (m_p1ownBoard->getEntryAtPosition(checkCol+1, checkRow) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol+1, checkRow)!="X"))
         {
           //std::cout<<"\nHitRi";
           checkCol++;
@@ -1478,7 +1485,7 @@ if(firstTurn==true)
           return;
 
         }
-        else if((checkRow+1 < 9) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow+1) == shipNum_string_test))//&&(medium->getEntryAtPosition( checkCol, checkRow+1)!="X" ))
+        else if((checkRow+1 < 8) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow+1) == shipNum_string_test))//&&(medium->getEntryAtPosition( checkCol, checkRow+1)!="X" ))
         {
           //std::cout<<"\nHitDo";
           checkRow++;
