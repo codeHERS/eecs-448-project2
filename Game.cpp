@@ -1337,8 +1337,8 @@ void Game::printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum)
     srand (time(NULL));
     do{
         keepAsking = false;
-         arrRow=rand()%7;
-        arrCol = rand()%7;
+         arrRow=rand()%8;
+        arrCol = rand()%8;
 
         if(!isAvailable(currentPlayerBoard, arrRow, arrCol)){
             keepAsking = true;
