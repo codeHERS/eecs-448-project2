@@ -1,6 +1,6 @@
 /**
- *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao)
- *   @date 2019 09 20
+ *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao) CodeHERS (Anjali Pare, Sindhu Shakamuri, Victoria Maldonado)
+ *   @date 10/20/19
  *   @file Ships.cpp
  *   @brief implements methods in Ships.h
  */
@@ -39,6 +39,7 @@ void Ships::decreaseSize(int ship) {
 		  }
 			if(ship == 2) {
 				m_ship2--;
+				//std::cout<<"\nLENGTH:"<<m_ship2;
 			}
 			if(ship == 3) {
 				m_ship3--;
@@ -92,5 +93,7 @@ bool Ships::allSunk()
 	}
 }
 void Ships::announce(int ship){
-	cout << "You've sunk ship "<<ship<<"!\n";
+	system("afplay Sink.wav -t 2");
+	//cout << "You've sunk ship "<<ship<<"!\n";
+	cout<<"Ship "<<ship<<" is sunk!\n";
 }

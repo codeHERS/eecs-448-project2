@@ -1,6 +1,6 @@
 /**
- *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao)
- *   @date 2019 09 20
+ *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao) CodeHERS (Anjali Pare, Sindhu Shakamuri, Victoria Maldonado)
+ *   @date 10/20/19
  *   @file Ships.h
  *   @brief Creates the "fleet" for the game and keeps track of each ships "size", or remaining health
  */
@@ -17,7 +17,7 @@ class Ships
 public:
     /**
      * @pre none
-     * @post initializes ships 
+     * @post initializes ships
      * @param numShips
      * @return none
      */

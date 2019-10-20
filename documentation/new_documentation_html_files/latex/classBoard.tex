@@ -1,0 +1,103 @@
+\hypertarget{classBoard}{}\section{Board Class Reference}
+\label{classBoard}\index{Board@{Board}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}{Board} ()
+\item 
+\hyperlink{classBoard_af73f45730119a1fd8f6670f53f959e68}{$\sim$\+Board} ()
+\item 
+string \hyperlink{classBoard_aa1985711c8014a20b04e4b8e0413a93c}{get\+Entry\+At\+Position} (int column, int row)
+\item 
+void \hyperlink{classBoard_a12effcd243fd9657b221360afbf8b3ea}{set\+Entry\+At\+Position} (string entry, int column, int row)
+\item 
+void \hyperlink{classBoard_aca49f093314a104381d05998bbf62f7f}{print\+Board} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}\label{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{Board()}{Board()}}
+{\footnotesize\ttfamily Board\+::\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Called to create board object 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Initializes 2D array and sets all entries to a space 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classBoard_af73f45730119a1fd8f6670f53f959e68}\label{classBoard_af73f45730119a1fd8f6670f53f959e68}} 
+\index{Board@{Board}!````~Board@{$\sim$\+Board}}
+\index{````~Board@{$\sim$\+Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{$\sim$\+Board()}{~Board()}}
+{\footnotesize\ttfamily Board\+::$\sim$\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Called to delete object 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Deletes the 2D array 
+\end{DoxyPostcond}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBoard_aa1985711c8014a20b04e4b8e0413a93c}\label{classBoard_aa1985711c8014a20b04e4b8e0413a93c}} 
+\index{Board@{Board}!get\+Entry\+At\+Position@{get\+Entry\+At\+Position}}
+\index{get\+Entry\+At\+Position@{get\+Entry\+At\+Position}!Board@{Board}}
+\subsubsection{\texorpdfstring{get\+Entry\+At\+Position()}{getEntryAtPosition()}}
+{\footnotesize\ttfamily string Board\+::get\+Entry\+At\+Position (\begin{DoxyParamCaption}\item[{int}]{column,  }\item[{int}]{row }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Valid row and column number 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em integer} & denoting a column number \\
+\hline
+{\em integer} & denoting a row number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String containing an entry 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBoard_aca49f093314a104381d05998bbf62f7f}\label{classBoard_aca49f093314a104381d05998bbf62f7f}} 
+\index{Board@{Board}!print\+Board@{print\+Board}}
+\index{print\+Board@{print\+Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{print\+Board()}{printBoard()}}
+{\footnotesize\ttfamily void Board\+::print\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints content of 2D board array 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classBoard_a12effcd243fd9657b221360afbf8b3ea}\label{classBoard_a12effcd243fd9657b221360afbf8b3ea}} 
+\index{Board@{Board}!set\+Entry\+At\+Position@{set\+Entry\+At\+Position}}
+\index{set\+Entry\+At\+Position@{set\+Entry\+At\+Position}!Board@{Board}}
+\subsubsection{\texorpdfstring{set\+Entry\+At\+Position()}{setEntryAtPosition()}}
+{\footnotesize\ttfamily void Board\+::set\+Entry\+At\+Position (\begin{DoxyParamCaption}\item[{string}]{entry,  }\item[{int}]{column,  }\item[{int}]{row }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Valid row and column number 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Sets array at given position to the new entry 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & entry for array \\
+\hline
+{\em integer} & denoting a column number \\
+\hline
+{\em integer} & denoting a row number \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Board_8h}{Board.\+h}\item 
+\hyperlink{Board_8cpp}{Board.\+cpp}\end{DoxyCompactItemize}

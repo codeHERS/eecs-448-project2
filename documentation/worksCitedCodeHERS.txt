@@ -1,0 +1,23 @@
+WORKS CITED
+-----------
+
+This code was expanded on the BattleShip code created by team Runtime Errors(Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, and Chongzhi Gao), Sept 20th 2019.
+
+Method: string getFileContents (std::ifstream& File)
+Author: TheMassiveChipmunk
+Classes: Used in Game.h and Game.cpp files 
+Website: http://www.cplusplus.com/forum/general/58945/
+
+Title: “SoundBible.com”
+Website: “soundbible.com”
+License: “Attribution 3.0”
+soundbible.com “Audience_Applause-Matthiew11-1206899159” .WAV file (renamed to End.wav)
+soundbible.com “dixie-horn_daniel-simion” .WAV file (renamed to Start_game.wav)
+soundbible.com “shotgun-spas_12-RA_The_Sun_God-503834910” .WAV file (renamed to Hit.wav)
+soundbible.com “sms-alert-1-daniel_simon” .WAV file (renamed to Miss.wav)
+soundbible.com “Running Water-SoundBible.com-568417508” .WAV file (renamed to Sink.wav)
+soundbible.com “Sad_Trombone-Joe_Lamb-665429450” .WAV file (renamed to AIWin.wav)
+soundbible.com “thunder_sound_FX-Grant_Evans-1523270250” .WAV file (renamed to Thunder.wav)
+
+
+

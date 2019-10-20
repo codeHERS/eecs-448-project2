@@ -1,6 +1,6 @@
 /**
- *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao)
- *   @date 9/19/19
+ *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao) CodeHERS (Anjali Pare, Sindhu Shakamuri, Victoria Maldonado)
+ *   @date 10/20/19
  *   @file Game.h
  *   @brief declares methods and member variables needed for game play
  */
@@ -11,12 +11,18 @@
 #include "Ships.h"
 #include <string>
 #include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
 using namespace std;
 
 class Game{
 
   private:
     int m_numShips;
+
+    //int m_maxShips;
 
     int userRow;
     string userCol;
@@ -39,7 +45,22 @@ class Game{
     string letsPlay;
     string p1Text;
     string p2Text;
+    string AIText;
     string wait;
+    string placingShipsAItext;
+
+    bool stormWasUsedByP1; //added memeber variable to know storm status
+    bool stormWasUsedByP2; //added memeber variable to know storm status
+
+
+    bool playingAgainstAI;
+    bool firstTurn=true;
+    int checkRow;
+    int checkCol;
+    std::string shipNum_string_test;
+    int SRow;//7
+    int SCol;//D
+    int length;
 
   public:
 
@@ -57,7 +78,7 @@ class Game{
      * @pre a game object exists
      * @post game play happens in this method
      */
-    void run();
+    void run(bool check, string level);
     /**
      * @pre a game object exists
      * @post each players' ships are placed on their respective boards
@@ -161,7 +182,7 @@ class Game{
      */
     int getUserCol();
     /**
-     * @pre board contains ships 1,2,3,4,5. 
+     * @pre board contains ships 1,2,3,4,5.
      * @post checks if a coordinate on a board is a hit or miss
      * @param Board - players board to check
      * @param int row - row
@@ -204,8 +225,55 @@ class Game{
      * @param player: the current player
      */
     void printPlayerTurn(int player);
+    /**
+     * @pre a game object exists.
+     * @post Ships for AI and player are placed on their respective boards
+     */
+    void setup_for_AI();
+    /**
+     * @pre a board object exists
+     * @post gets the coordinates to randomly place a ship on the board for AI and verifies input
+     * @param currentPlayerBoard: denotes the current player
+     * @param shipNum: denotes the ship number
+     * @return
+     */
+    void printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum);
+    /**
+     * @pre
+     * @post gets the coordinates to randomly fire at a ship on the opponents board and performs necessary changes on the respective boards
+     * @param
+     * @return
+     */
+    void p2Turn_AI_easy();
+    /**
+     * @pre
+     * @post It fires randomly until it hit a ship then fires in orthogonally adjacent spaces to find other hits until a ship is sunk
+     * @param
+     * @return
+     */
+    void p2Turn_AI_medium();
+    /**
+     * @pre
+     * @post This mode knows where all your ships are and lands a hit every turn
+     * @param
+     * @return
+     */
+    void p2Turn_AI_hard();
 
+    /**
+     * @pre function called by player two once in the game.
+     * @post definitive random hit to the other player's board
+     * @param
+     * @return
+     */
+    void stormAffectingP1();
 
-
+    /**
+     * @pre function called by player one once in the game.
+     * @post definitive random hit to the other player's board
+     * @param
+     * @return
+     */
+    void stormAffectingP2();
 };
 #endif
