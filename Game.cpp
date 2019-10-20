@@ -425,7 +425,7 @@ void Game::p1Turn(){
      //puts an x on the opponnets board
      m_p2ownBoard->setEntryAtPosition("X", p1_attack_col, p1_attack_row );
    }else{
-     system("afplay Miss.wav -t 2");
+     system("afplay Miss.wav -t 1");
      cout << "That's a MISS! Better luck next time." << endl;
      m_p1oppBoard->setEntryAtPosition("M", p1_attack_col, p1_attack_row);
    }
@@ -507,7 +507,7 @@ void Game::p2Turn(){
         //puts an x on the opponnets board
         m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
     }else{
-      system("afplay Miss.wav -t 2");
+      system("afplay Miss.wav -t 1");
       cout << "That's a MISS! Better luck next time." << endl;
       m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
     }
@@ -1315,13 +1315,15 @@ void Game::p2Turn_AI_easy(){
 
     int p2_attack_row = 0;
     int p2_attack_col = 0;
+    int i = 0;
+    int j = 0;
     string wait = "";
-
+    srand (time(NULL));
     string shipNum_string;
     int shipNum;
 
     //print Board
-    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);//remove once done
 
     while(1){
       //srand (time(NULL));
@@ -1337,7 +1339,13 @@ void Game::p2Turn_AI_easy(){
 
     //hit or miss,
     if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
-      cout << "That's a HIT!" << endl;
+      //cout << "That's a HIT!" << endl;
+
+      j=p2_attack_col;
+      i=p2_attack_row;
+      //std::cout<<j<<i;
+      system("afplay Hit.wav -t 3");
+      cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
       m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
 
         //decreases the opponents ship on hit and announces if sunk
@@ -1351,7 +1359,12 @@ void Game::p2Turn_AI_easy(){
         //puts an x on the opponnets board
         m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
     }else{
-      cout << "That's a MISS! Better luck next time." << endl;
+      //cout << "That's a MISS! Better luck next time." << endl;
+      system("afplay Miss.wav -t 1");
+      j=p2_attack_col;
+      i=p2_attack_row;
+      //std::cout<<j<<i;
+      cout << "AI missed your ship at "<< i+1 << char(65+j) << endl;
       m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
     }
 
@@ -1411,12 +1424,15 @@ void Game::p2Turn_AI_hard(){
                     i = row;
                     j= col;
                     cout << "That's a HIT!" << endl;
+
                     m_p2oppBoard->setEntryAtPosition("H",col, row);
 
                     //prints board
-                    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+                    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);//delete when done working
 
                     //decreases the opponents ship on hit and announces if sunk
+                    system("afplay Hit.wav -t 3");
+                    cout << "AI hit your ship at "<< i+1 << char(65+j) << endl;
                     shipNum_string = m_p1ownBoard->getEntryAtPosition(col, row);
                     if(shipNum_string == " ")
                     {

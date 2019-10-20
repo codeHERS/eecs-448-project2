@@ -92,6 +92,7 @@ bool Ships::allSunk()
 	}
 }
 void Ships::announce(int ship){
-	system("afplay Sink.wav -t 3");
-	cout << "You've sunk ship "<<ship<<"!\n";
+	system("afplay Sink.wav -t 2");
+	//cout << "You've sunk ship "<<ship<<"!\n";
+	cout<<"Ship "<<ship<<" is sunk!\n";
 }
