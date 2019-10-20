@@ -998,7 +998,7 @@ do{
         for(int i=0;i<lengthText;i++){
         cout<<placingShipsAItext[i];
         fflush(stdout);
-        sleep(0.4);
+        sleep(0);
       }
         cout<<endl;
         cout << "Press any letter key then hit Enter to continue...";
