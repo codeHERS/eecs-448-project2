@@ -1381,47 +1381,45 @@ void Game::p2Turn_AI_easy(){
 void Game::p2Turn_AI_medium(){
   int p2_attack_row = 0;
   int p2_attack_col = 0;
-<<<<<<< HEAD
+
 
     bool checkRight = true;
     bool checkLeft = true;
     bool checkUp = true;
     bool checkDown = true;
 
-=======
->>>>>>> 1bc92f65899eb8553bb425d228f5cc14773b91b8
+
   //string p2_attack_col_string;
 
   string wait = "";
 
   string shipNum_string;
-<<<<<<< HEAD
+
   int shipNum;
 
-=======
+
   int shipNum=0;
   //std::cout<<"yessssssss";
 if(firstTurn==true)
 {
->>>>>>> 1bc92f65899eb8553bb425d228f5cc14773b91b8
+
   while(1){
     //srand (time(NULL));
       p2_attack_row =rand()%8;
       p2_attack_col = rand()%8;
-<<<<<<< HEAD
-=======
+
       //p2_attack_row = SRow;
       //p2_attack_col = SCol;
       checkCol = p2_attack_col;
       checkRow= p2_attack_row;
->>>>>>> 1bc92f65899eb8553bb425d228f5cc14773b91b8
+
     //std::cout<<"\nI'm YOOOO\n";
       if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
           //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
       }else{
           break;
       }
-<<<<<<< HEAD
+
 
   }
   //hit or miss,
@@ -1685,7 +1683,7 @@ if(firstTurn==true)
       //}
   //  }
   }
-=======
+
 
   }
 
@@ -1724,7 +1722,7 @@ if(firstTurn==true)
     cout << "That's a MISS! Better luck next time." << endl;
   }
 }
->>>>>>> 1bc92f65899eb8553bb425d228f5cc14773b91b8
+
 
     //checks right
     else
@@ -1879,7 +1877,7 @@ void Game::p2Turn_AI_hard(){
                     m_p2oppBoard->setEntryAtPosition("H",col, row);
 
                     //prints board
-                    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);//delete when done working
+                  //  printPlayerBoards(m_p2ownBoard, m_p2oppBoard);//delete when done working
 
                     //decreases the opponents ship on hit and announces if sunk
                     system("afplay Hit.wav -t 3");
