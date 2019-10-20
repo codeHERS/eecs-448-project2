@@ -1222,9 +1222,10 @@ do{
 void Game::printCoordinateInteraction_AI(Board* currentPlayerBoard, int shipNum){
     string userRowString="";
     bool keepAsking = false;
+      srand (time(NULL));
 
     do{
-        srand (time(NULL));
+
         keepAsking = false;
          arrRow=rand()%7;
         arrCol = rand()%7;
@@ -1295,18 +1296,19 @@ void Game::p2Turn_AI_medium(){
   int p2_attack_row = 0;
   int p2_attack_col = 0;
   //string p2_attack_col_string;
+  bool checkRight = true;
+  bool checkLeft = true;
+  bool checkUp = true;
+  bool checkDown = true;
   string wait = "";
 
   string shipNum_string;
   int shipNum;
 
-  //print Board
-  //printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
-
   while(1){
     //srand (time(NULL));
-      p2_attack_row =rand()%7;
-      p2_attack_col = rand()%7;
+      p2_attack_row =rand()%8;
+      p2_attack_col = rand()%8;
     //std::cout<<"\nI'm YOOOO\n";
       if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
           //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
@@ -1317,54 +1319,230 @@ void Game::p2Turn_AI_medium(){
   }
   //hit or miss,
   if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
+
+    m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
+    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+    cout << "That's a HIT!" << endl;
+    shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
+    shipNum = stoi(shipNum_string);
+    m_p1Ships->decreaseSize(shipNum);
+    m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
+  /*  if(shipNum == 1)
+    {
+      checkRight = false;
+      checkLeft = false;
+      checkUp = false;
+      checkDown = false;
+    }*/
+  //  shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
+    //shipNum = stoi(shipNum_string);
+    //m_p1Ships->decreaseSize(shipNum);
+
+
     //checks right
-    if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_row+1, p2_attack_col) == " "))
+    while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == " ") && checkRight == true && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == "M") )
     {
-      cout << "That's a HIT!" << endl;
-      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row+1);
+    //  p2_attack_row = p2_attack_row +1;
+      //if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == " "))
+      //{
+    //  if(p2_attack_row == 8 || p2_attack_row+1 > 8)
+      //{
+    //    checkRight = false;
+    //  }
+      //  else
+      //  {
+          if(checkRight == true  && !(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == " ") && (p2_attack_row < 9) )
+          {
+            m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row+1);
+            printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+            cout << "That's a HIT!" << endl;
+            shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1);
+            shipNum = stoi(shipNum_string);
+            m_p1Ships->decreaseSize(shipNum);
+            checkRight = true;
+            p2_attack_row++;
+           if(m_p1Ships->isSunk(shipNum))
+            {
+                checkRight = false;
+            }
+          }
+          else{
+            checkRight = false;
+          }
+      //    if(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == " ")
+      //    {
+        //    checkRight = false;
+
+          //}
+      //  }
+
+        //checks if it is empty then loop stops
+
+      //  m_p1Ships->decreaseSize(shipNum);
+        //if((m_p2oppBoard->getEntryAtPosition(row, col) == "H")
+
+    //  }
+      //p2_attack_row++;
     }
-    //checks up
-    else if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_row, p2_attack_col+1) == " "))
-    {
-      cout << "That's a HIT!" << endl;
-      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col+1, p2_attack_row);
-    }
+
     //checks down
-    else if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_row, p2_attack_col-1) == " "))
+    while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == " ") && checkDown == true && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "M") )
     {
-      cout << "That's a HIT!" << endl;
-      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col-1, p2_attack_row);
+      //p2_attack_col = p2_attack_col+1;
+      //if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == " ") && checkDown == true)
+      //{
+    //  if(p2_attack_col == 8|| p2_attack_col+1  > 8)
+    //  {
+    //    checkDown= false;
+      //}
+      //else{
+          if(checkDown == true && !(m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == " ") && (p2_attack_col < 9))
+          {
+            m_p2oppBoard->setEntryAtPosition("H", p2_attack_col+1, p2_attack_row);
+            printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+            cout << "That's a HIT!" << endl;
+            shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row);
+            shipNum = stoi(shipNum_string);
+            m_p1Ships->decreaseSize(shipNum);
+            checkDown = true;
+            p2_attack_col++;
+            if(m_p1Ships->isSunk(shipNum))
+            {
+                checkDown = false;
+            }
+
+          }
+          else{
+            checkDown = false;
+          }
+        //  if(m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == " ")
+        //  {
+        //    checkDown = false;
+          //}
+
+
+      //  }
+
+        //p2_attack_col++;
+      //  m_p1Ships->decreaseSize(shipNum);
+
+    //  }
     }
-    //checks left
-    else if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_row-1, p2_attack_col) == " "))
+
+    //checks up
+    while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == " ") && checkUp == true && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == "H")  &&  !(m_p2oppBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == "M"))
     {
-      cout << "That's a HIT!" << endl;
-      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row-1);
+    //  p2_attack_col = p2_attack_col -1;
+    //  if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == " ") && checkUp == true )
+      //{
+      //if(p2_attack_col == 0 || p2_attack_col-1 < 0)
+      //{
+        //checkUp = false;
+      //}
+        //else{
+          if(checkUp ==true && !(m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == " ") && (p2_attack_col > 0))
+          {
+              m_p2oppBoard->setEntryAtPosition("H", p2_attack_col-1, p2_attack_row);
+              printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+              cout << "That's a HIT!" << endl;
+              shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row);
+              shipNum = stoi(shipNum_string);
+              m_p1Ships->decreaseSize(shipNum);
+              checkUp = true;
+              p2_attack_col--;
+              if(m_p1Ships->isSunk(shipNum))
+              {
+                 checkUp = false;
+              }
+
+            }
+            else{
+              checkUp = false;
+            }
+        //    if(m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == " ")
+        //    {
+          //    checkUp = false;
+          //  }
+
+      //  }
+
+        //p2_attack_col--;
+      //  m_p1Ships->decreaseSize(shipNum);
+    //  }
+  }
+
+    //checks left works for sure
+    while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == " ") && checkLeft == true && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == "M"))
+    {
+        //p2_attack_row = p2_attack_row -1;;
+      //if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == " ") && checkLeft == true)
+      //{
+    //  if(p2_attack_row == 0 || p2_attack_row-1 < 0)
+    //  {
+    //    checkLeft = false;
+    //  }
+    //    else{
+          if(checkLeft == true && !(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == " ") && (p2_attack_col > 0))
+            {
+                m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row-1);
+                printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+                cout << "That's a HIT!" << endl;
+                shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1);
+                shipNum = stoi(shipNum_string);
+                m_p1Ships->decreaseSize(shipNum);
+                checkLeft = true;
+                p2_attack_row--;
+                if(m_p1Ships->isSunk(shipNum))
+                {
+                    checkLeft = false;
+                }
+
+          }
+          else{
+            checkLeft = false;
+          }
+         if(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == " ")
+         {
+            checkLeft = false;
+          }
+
+      //  }
+    //    if(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == " ")
+    //    {
+      //    checkLeft = false;
+      //  }
+        //p2_attack_row--;
+        //m_p1Ships->decreaseSize(shipNum);
+
+      //}
     }
-    else{
-      cout << "That's a HIT!" << endl;
-      printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
-      m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
-      shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
-      shipNum = stoi(shipNum_string);
-      m_p1Ships->decreaseSize(shipNum);
+
+  //else{
+    //  m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
+    //  printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+      //cout << "That's a HIT!" << endl;
+    //  shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
+    //  shipNum = stoi(shipNum_string);
+      //m_p1Ships->decreaseSize(shipNum);
       if(m_p1Ships->allSunk()){
           return;
       }
-    }
-     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
-      m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
-  }else{
+  //}
+     //printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+      //m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
+  }
+  else{
+    m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
     cout << "That's a MISS! Better luck next time." << endl;
-    m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
   }
+
 
   cout << "Next Player's Turn. Press any letter key then hit Enter to continue...";
   cin>> wait;
 
+  //}
 }
-//}
 
 void Game::p2Turn_AI_hard(){
   string wait = "";
