@@ -1437,13 +1437,16 @@ void Game::p2Turn_AI_medium(){
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
     cout << "That's a HIT!" << endl;
     shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
+    //saves number of ship to be attacked
     shipAttacked = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
+
     shipNum = stoi(shipNum_string);
     m_p1Ships->decreaseSize(shipNum);
     m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
 
 
     //checks right
+    //this if statement basically checks if the row+1 or col+1 will still be in the array
     if((p2_attack_row+1 < 8))
     {
       while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == " ") && (checkRight == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == "M"))
@@ -1462,10 +1465,6 @@ void Game::p2Turn_AI_medium(){
                 m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row+1);
                 //checkRight = true;
                 p2_attack_row++;
-               //if(m_p1Ships->isSunk(shipNum))
-                //{
-                    //checkRight = false;
-                //}
               }
 
             }else
@@ -1473,6 +1472,7 @@ void Game::p2Turn_AI_medium(){
               checkRight = false;
               checkLeft = true;
             }
+            //Changed the if statement below to an else statement above, but we may have to edit
             //if(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == " " || (m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "H") || (m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "M")){
       //
       //        }
@@ -1482,6 +1482,7 @@ void Game::p2Turn_AI_medium(){
 
 
     //checks down
+    //this if statement basically checks if the row+1 or col+1 will still be in the array
     if((p2_attack_col+1 < 8))
     {
       while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == " ") && (checkDown == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "M"))
@@ -1522,6 +1523,7 @@ void Game::p2Turn_AI_medium(){
     }
 
     //checks up
+    //this if statement basically checks if the row+1 or col+1 will still be in the array
     if(p2_attack_col-1 >= 0)
     {
       while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == " ") && (checkUp == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == "M"))
@@ -1569,6 +1571,7 @@ void Game::p2Turn_AI_medium(){
 
 
     //checks left works for sure
+    //this if statement basically checks if the row+1 or col+1 will still be in the array
     if(p2_attack_col-1 >= 0)
     {
       while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == " ") && (checkLeft == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == "M"))
