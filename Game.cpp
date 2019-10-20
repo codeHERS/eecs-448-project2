@@ -1154,8 +1154,8 @@ do{
 	                if (isAvailable(m_p2ownBoard,arrRow, arrCol))
 	                {
 	                addShiptoArray("1", arrRow, arrCol, userDirection, 2);
-	                std::cout<<"Player 2's current Board:\n";
-	                printOwnBoard(m_p2ownBoard);
+	               // std::cout<<"Player 2's current Board:\n";
+	                //printOwnBoard(m_p2ownBoard);
 	                }
 	            }
 	            break;
@@ -1185,8 +1185,8 @@ do{
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
+	                        //std::cout<<"Player 2's current Board:\n";
+	                       // printOwnBoard(m_p2ownBoard);
 	                    }
 	            }
 	            break;
@@ -1217,8 +1217,8 @@ do{
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
+	                      //  std::cout<<"Player 2's current Board:\n";
+	                      //  printOwnBoard(m_p2ownBoard);
 	                    }
 	            }
 	            break;
@@ -1248,8 +1248,8 @@ do{
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
+	                       // std::cout<<"Player 2's current Board:\n";
+	                      //  printOwnBoard(m_p2ownBoard);
 	                    }
 
 	            }
@@ -1280,8 +1280,8 @@ do{
 	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
 	                    {
 	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
+	                      //  std::cout<<"Player 2's current Board:\n";
+	                       // printOwnBoard(m_p2ownBoard);
 	                    }
 	            }
 	            break;
@@ -1695,8 +1695,7 @@ if(firstTurn==true)
     bool checkLeft = false;
     bool checkUp = false;
     bool checkDown = false;
-    checkCol = p2_attack_col;
-    checkRow = p2_attack_row;
+
 
     m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
@@ -1711,8 +1710,6 @@ if(firstTurn==true)
         }
         shipNum_string_test = m_p1ownBoard->getEntryAtPosition(checkCol, checkRow);
         m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
-        SRow = checkRow;
-        SCol = checkCol;
     //medium->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
     //checkRow = p2_attack_row;
     //checkCol = p2_attack_col;
@@ -1733,7 +1730,7 @@ if(firstTurn==true)
       //std::cout<<"\nYes I rock";
       while(!m_p1Ships->allSunk())
       {
-        if((checkCol+1 < 8) && (m_p1ownBoard->getEntryAtPosition(checkCol+1, checkRow) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol+1, checkRow)!="X"))
+        if((checkCol+1 < 9) && (m_p1ownBoard->getEntryAtPosition(checkCol+1, checkRow) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol+1, checkRow)!="X"))
         {
           //std::cout<<"\nHitRi";
           checkCol++;
@@ -1750,8 +1747,8 @@ if(firstTurn==true)
           }
           if(length==0)
           {
-            //SRow = 7;//8
-            //SCol = 0;//a
+            SRow = 7;//8
+            SCol = 0;//a
             firstTurn=true;
             //std::cout<<"this is what is first turn:"<<firstTurn;
             return;
@@ -1759,7 +1756,7 @@ if(firstTurn==true)
           return;
 
         }
-        else if((checkRow+1 < 8) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow+1) == shipNum_string_test))//&&(medium->getEntryAtPosition( checkCol, checkRow+1)!="X" ))
+        if((checkRow+1 < 9) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow+1) == shipNum_string_test))//&&(medium->getEntryAtPosition( checkCol, checkRow+1)!="X" ))
         {
           //std::cout<<"\nHitDo";
           checkRow++;
@@ -1775,8 +1772,8 @@ if(firstTurn==true)
           }
           if(length==0)
           {
-            //SRow = 7;
-            //SCol = 0;
+            SRow = 7;
+            SCol = 0;
             firstTurn=true;
             //std::cout<<"this is what is first turn:"<<firstTurn;
             return;
@@ -1784,7 +1781,7 @@ if(firstTurn==true)
           return;
         }
 
-        else if((checkRow-1 > -1) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow-1) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol, checkRow-1)!="X" ))
+        if((checkRow-1 > -1) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow-1) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol, checkRow-1)!="X" ))
         {
           //std::cout<<"\nHitUP";
           checkRow--;
@@ -1802,8 +1799,8 @@ if(firstTurn==true)
           }
           if(length==0)
           {
-            //SRow = 7;
-            //SCol = 0;
+            SRow = 7;
+            SCol = 0;
             firstTurn=true;
             //std::cout<<"this is what is first turn:"<<firstTurn;
             return;
@@ -1819,7 +1816,7 @@ if(firstTurn==true)
           return;
 
         }
-        else if((checkCol-1 > -1) && (m_p1ownBoard->getEntryAtPosition(checkCol-1, checkRow) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol, checkRow-1)!="X" ))
+        if((checkCol-1 > -1) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow-1) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol, checkRow-1)!="X" ))
         {
           //std::cout<<"\nHitRi";
           checkCol--;
@@ -1835,8 +1832,8 @@ if(firstTurn==true)
           }
           if(length==0)
           {
-            //SRow = 7;
-            //SCol = 0;
+            SRow = 7;
+            SCol = 0;
             firstTurn=true;
             //std::cout<<"this is what is first turn:"<<firstTurn;
             return;
@@ -1846,20 +1843,13 @@ if(firstTurn==true)
         }
         else
         {
-          if(length!=0)
-          {
-            checkRow = SRow;
-            checkCol = SCol;
-          }//std::cout<<"\nYooooooo";
+          //std::cout<<"\nYooooooo";
         }
       }
       firstTurn=true;
       return;
     }
   }
-
-
-
 
 void Game::p2Turn_AI_hard(){
   string wait = "";
