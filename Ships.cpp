@@ -1,6 +1,6 @@
 /**
- *   @author CodeHERS
- *   @date 
+ *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao) CodeHERS (Anjali Pare, Sindhu Shakamuri, Victoria Maldonado)
+ *   @date 10/20/19
  *   @file Ships.cpp
  *   @brief implements methods in Ships.h
  */
@@ -92,5 +92,6 @@ bool Ships::allSunk()
 	}
 }
 void Ships::announce(int ship){
+	system("afplay Sink.wav -t 3");
 	cout << "You've sunk ship "<<ship<<"!\n";
 }

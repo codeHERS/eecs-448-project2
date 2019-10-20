@@ -1,6 +1,6 @@
 /**
- *   @author CodeHERS
- *   @date
+ *   @author Runtime Terrors (Abby Davidow, Anissa Khan, Grant Schnettgoecke, Jacob Swearingen, Chongzhi Gao) CodeHERS (Anjali Pare, Sindhu Shakamuri, Victoria Maldonado)
+ *   @date 10/20/19
  *   @file Game.cpp
  *   @brief implemented methods needed for game play from header file
  */
@@ -1041,14 +1041,7 @@ do{
 	                std::cout<<"Player 1's current Board:\n";
 	                printOwnBoard(m_p1ownBoard);
 	                }
-	            }/*else{
-	                if (isAvailable(m_p2ownBoard,arrRow, arrCol))
-	                {
-	                addShiptoArray("1", arrRow, arrCol, userDirection, 2);
-	                std::cout<<"Player 2's current Board:\n";
-	                printOwnBoard(m_p2ownBoard);
-	                }
-	            }*/
+	            }
 	            break;
 
 	        case 2:
@@ -1069,15 +1062,6 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-	                /*else
-	                {
-	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
-	                    {
-	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
-	                    }
-	                }*/
 	            }
 	            break;
 
@@ -1099,15 +1083,7 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-	                /*else
-	                {
-	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
-	                    {
-	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
-	                    }
-	                }*/
+
 	            }
 	            break;
 
@@ -1129,15 +1105,7 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-	                /*else
-	                {
-	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
-	                    {
-	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        //printOwnBoard(m_p2ownBoard);
-	                    }
-	                }*/
+
 	            }
 	            break;
 
@@ -1159,15 +1127,7 @@ do{
 	                        printOwnBoard(m_p1ownBoard);
 	                    }
 	                }
-	                /*else
-	                {
-	                    if (isAvailable(m_p2ownBoard, arrRow, arrCol) && checkUpDownLeftRight(m_p2oppBoard, arrRow, arrCol, shipNum, userDirection))
-	                    {
-	                        addShiptoArray(shipString, arrRow, arrCol, userDirection, 2);
-	                        std::cout<<"Player 2's current Board:\n";
-	                        printOwnBoard(m_p2ownBoard);
-	                    }
-	                }*/
+
 	            }
 	            break;
 	    }
@@ -1181,7 +1141,6 @@ do{
          // srand (time(NULL));
 	        arrRow=rand()%8;
 	        arrCol = rand()%8;
-          std::cout<<"\nI'm herer\n";
 	            userDirection="none";//set userDirection=none because ship of size 1 is only one point on the array
 
 	            if(m_currentPlayer==1){
