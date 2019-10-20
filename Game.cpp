@@ -1702,12 +1702,22 @@ if(firstTurn==true)
     cout << "That's a HIT!" << endl;
     shipNum_string = m_p1ownBoard->getEntryAtPosition(checkCol, checkRow);
     shipNum = stoi(shipNum_string);
+    if(shipNum==1)
+    {
+      m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
+      m_p1Ships->decreaseSize(shipNum);
+          if(m_p1Ships->allSunk()){
+              return;
+          }
+          return;
+    }
     length=shipNum;
     length--;
     m_p1Ships->decreaseSize(shipNum);
         if(m_p1Ships->allSunk()){
             return;
         }
+
         shipNum_string_test = m_p1ownBoard->getEntryAtPosition(checkCol, checkRow);
         m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
     //medium->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
