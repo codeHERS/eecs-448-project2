@@ -53,6 +53,9 @@ class Game{
     bool stormWasUsedByP2;
 
     bool playingAgainstAI;
+    bool mediumAIcurrentlyHitting;
+    string shipAttacked;
+    int positionLastAttacked[2];
   public:
 
     /**

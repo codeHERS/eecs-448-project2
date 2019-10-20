@@ -293,6 +293,7 @@ void Game::run(bool check, string level){
     m_p1Ships = new Ships(m_numShips);
     m_p2Ships = new Ships(m_numShips);
     playingAgainstAI = check;
+    mediumAIcurrentlyHitting=false;
   //start game
   system("clear");
 
@@ -1404,38 +1405,46 @@ void Game::p2Turn_AI_medium(){
   int p2_attack_row = 0;
   int p2_attack_col = 0;
   //string p2_attack_col_string;
+  bool checkRight;
+  bool checkLeft;
+  bool checkUp;
+  bool checkDown;
 
   string wait = "";
 
   string shipNum_string;
   int shipNum;
-
-  while(1){
-    //srand (time(NULL));
-      p2_attack_row =rand()%8;
-      p2_attack_col = rand()%8;
-    //std::cout<<"\nI'm YOOOO\n";
-      if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
-          //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
-      }else{
-          break;
-      }
-
-  }
-
-  //hit or miss,
-  if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
-
+  if(mediumAIcurrentlyHitting==false){
     bool checkRight = true;
     bool checkLeft = true;
     bool checkUp = true;
     bool checkDown = true;
-    string shipAttacked;
+    while(1){
+      //srand (time(NULL));
+        p2_attack_row =rand()%8;
+        p2_attack_col = rand()%8;
+      //std::cout<<"\nI'm YOOOO\n";
+        if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
+            //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
+        }else{
+            break;
+        }
+
+      }
+  }else{
+    p2_attack_row = positionLastAttacked[0];
+    p2_attack_col = positionLastAttacked[1];
+  }
 
 
+  //hit or miss,
+  if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col) || m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "X"){
+    mediumAIcurrentlyHitting = true;
     m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
     cout << "That's a HIT!" << endl;
+    positionLastAttacked[0] = p2_attack_row;
+    positionLastAttacked[1] = p2_attack_col;
     shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
     //saves number of ship to be attacked
     shipAttacked = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
@@ -1449,7 +1458,7 @@ void Game::p2Turn_AI_medium(){
     //this if statement basically checks if the row+1 or col+1 will still be in the array
     if((p2_attack_row+1 < 8))
     {
-      while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == " ") && (checkRight == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == "M"))
+      if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == " ") && (checkRight == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1) == "M"))
       {
             if(checkRight == true && (p2_attack_row+1 < 8) )
             {
@@ -1459,6 +1468,8 @@ void Game::p2Turn_AI_medium(){
 
                 printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
                 cout << "That's a HIT!" << endl;
+                positionLastAttacked[0] = p2_attack_row;
+                positionLastAttacked[1] = p2_attack_col;
                 shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row+1);
                 shipNum = stoi(shipNum_string);
                 m_p1Ships->decreaseSize(shipNum);
@@ -1485,7 +1496,7 @@ void Game::p2Turn_AI_medium(){
     //this if statement basically checks if the row+1 or col+1 will still be in the array
     if((p2_attack_col+1 < 8))
     {
-      while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == " ") && (checkDown == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "M"))
+      if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == " ") && (checkDown == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row) == "M"))
       {
 
             if(checkDown == true  && (p2_attack_col+1 < 8))
@@ -1496,6 +1507,8 @@ void Game::p2Turn_AI_medium(){
 
                 printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
                 cout << "That's a HIT!" << endl;
+                positionLastAttacked[0] = p2_attack_row;
+                positionLastAttacked[1] = p2_attack_col;
                 shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col+1, p2_attack_row);
                 shipNum = stoi(shipNum_string);
                 m_p1Ships->decreaseSize(shipNum);
@@ -1526,7 +1539,7 @@ void Game::p2Turn_AI_medium(){
     //this if statement basically checks if the row+1 or col+1 will still be in the array
     if(p2_attack_col-1 >= 0)
     {
-      while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == " ") && (checkUp == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == "M"))
+      if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == " ") && (checkUp == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == "M"))
       {
       //  p2_attack_col = p2_attack_col -1;
       //  if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row) == " ") && checkUp == true )
@@ -1544,6 +1557,8 @@ void Game::p2Turn_AI_medium(){
 
                 printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
                 cout << "That's a HIT!" << endl;
+                positionLastAttacked[0] = p2_attack_row;
+                positionLastAttacked[1] = p2_attack_col;
                 shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col-1, p2_attack_row);
                 shipNum = stoi(shipNum_string);
                 m_p1Ships->decreaseSize(shipNum);
@@ -1574,7 +1589,7 @@ void Game::p2Turn_AI_medium(){
     //this if statement basically checks if the row+1 or col+1 will still be in the array
     if(p2_attack_col-1 >= 0)
     {
-      while(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == " ") && (checkLeft == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == "M"))
+      if(!(m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == " ") && (checkLeft == true) && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == "H") && !(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1) == "M"))
       {
 
             if(checkLeft == true  && (p2_attack_col-1 >= 0))
@@ -1585,6 +1600,8 @@ void Game::p2Turn_AI_medium(){
 
                   printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
                   cout << "That's a HIT!" << endl;
+                  positionLastAttacked[0] = p2_attack_row;
+                  positionLastAttacked[1] = p2_attack_col;
                   shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row-1);
                   shipNum = stoi(shipNum_string);
                   m_p1Ships->decreaseSize(shipNum);
@@ -1624,6 +1641,7 @@ void Game::p2Turn_AI_medium(){
       //m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
   }
   else{
+    mediumAIcurrentlyHitting = false;
     m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
     printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
     cout << "That's a MISS! Better luck next time." << endl;
