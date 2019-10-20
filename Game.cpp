@@ -1379,34 +1379,196 @@ void Game::p2Turn_AI_easy(){
 }
 
 void Game::p2Turn_AI_medium(){
-
   int p2_attack_row = 0;
   int p2_attack_col = 0;
+  //string p2_attack_col_string;
+
   string wait = "";
 
   string shipNum_string;
-  int shipNum;
-
-  //print Board
-  printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
-
+  int shipNum=0;
+  //std::cout<<"yessssssss";
+if(firstTurn==true)
+{
   while(1){
-      p2_attack_col = rand()%7;
-      //std::cout<<"\nI'm YOOOO\n";
+    //srand (time(NULL));
+      p2_attack_row =rand()%8;
+      p2_attack_col = rand()%8;
+      //p2_attack_row = SRow;
+      //p2_attack_col = SCol;
+      checkCol = p2_attack_col;
+      checkRow= p2_attack_row;
+    //std::cout<<"\nI'm YOOOO\n";
       if(m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "H" || m_p2oppBoard->getEntryAtPosition(p2_attack_col, p2_attack_row) == "M"){
           //cout<< "You have already tried to attack there. Pick a different coordinate." << endl;
-      }
-      else{
+      }else{
           break;
       }
-      if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
-        cout << "That's a HIT!" << endl;
-        m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
-        break;
-      }
 
-    }
+  }
+
+  //hit or miss,
+  std::cout<<p2_attack_row<<p2_attack_col;
+  if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
+
+    bool checkRight = false;
+    bool checkLeft = false;
+    bool checkUp = false;
+    bool checkDown = false;
+
+
+    m_p2oppBoard->setEntryAtPosition("H", p2_attack_col, p2_attack_row);
+    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+    cout << "That's a HIT!" << endl;
+    shipNum_string = m_p1ownBoard->getEntryAtPosition(checkCol, checkRow);
+    shipNum = stoi(shipNum_string);
+    length=shipNum;
+    length--;
+    m_p1Ships->decreaseSize(shipNum);
+        if(m_p1Ships->allSunk()){
+            return;
+        }
+        shipNum_string_test = m_p1ownBoard->getEntryAtPosition(checkCol, checkRow);
+        m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
+    //medium->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
+    //checkRow = p2_attack_row;
+    //checkCol = p2_attack_col;
+    //shipNum_string = m_p2ownBoard->getEntryAtPosition(row, col);
+    firstTurn = false;
+  }
+  else{
+    m_p2oppBoard->setEntryAtPosition("M", p2_attack_col, p2_attack_row);
+    printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+    cout << "That's a MISS! Better luck next time." << endl;
+  }
 }
+
+    //checks right
+    else
+    {
+      //std::cout<<"\nYes I rock";
+      while(!m_p1Ships->allSunk())
+      {
+        if((checkCol+1 < 9) && (m_p1ownBoard->getEntryAtPosition(checkCol+1, checkRow) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol+1, checkRow)!="X"))
+        {
+          //std::cout<<"\nHitRi";
+          checkCol++;
+          //checkRight=true;
+          //medium->setEntryAtPosition("X", checkCol, checkRow);
+          printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+          m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
+          m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
+          shipNum = stoi(shipNum_string_test);
+          length--;
+          m_p1Ships->decreaseSize(shipNum);
+          if(m_p1Ships->allSunk()){
+            return;
+          }
+          if(length==0)
+          {
+            SRow = 7;//8
+            SCol = 0;//a
+            firstTurn=true;
+            //std::cout<<"this is what is first turn:"<<firstTurn;
+            return;
+          }
+          return;
+
+        }
+        if((checkRow+1 < 9) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow+1) == shipNum_string_test))//&&(medium->getEntryAtPosition( checkCol, checkRow+1)!="X" ))
+        {
+          //std::cout<<"\nHitDo";
+          checkRow++;
+          //medium->setEntryAtPosition("X", checkCol, checkRow);
+          printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+          m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
+          m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
+          shipNum = stoi(shipNum_string_test);
+          length--;
+          m_p1Ships->decreaseSize(shipNum);
+          if(m_p1Ships->allSunk()){
+            return;
+          }
+          if(length==0)
+          {
+            SRow = 7;
+            SCol = 0;
+            firstTurn=true;
+            //std::cout<<"this is what is first turn:"<<firstTurn;
+            return;
+          }
+          return;
+        }
+
+        if((checkRow-1 > -1) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow-1) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol, checkRow-1)!="X" ))
+        {
+          //std::cout<<"\nHitUP";
+          checkRow--;
+          //medium->setEntryAtPosition("X", checkCol, checkRow);
+          printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+
+          m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
+          m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
+          //std::cout<<"\nHitLe";
+          shipNum = stoi(shipNum_string_test);
+          length--;
+          m_p1Ships->decreaseSize(shipNum);
+          if(m_p1Ships->allSunk()){
+            return;
+          }
+          if(length==0)
+          {
+            SRow = 7;
+            SCol = 0;
+            firstTurn=true;
+            //std::cout<<"this is what is first turn:"<<firstTurn;
+            return;
+          }
+          //m_p1Ships->decreaseSize(shipNum);
+          /*if(m_p1Ships->allSunk()){
+            SRow = 3;
+            SCol = 5;
+            firstTurn=true;
+            std::cout<<"this is what is first turn:"<<firstTurn;
+            return;
+          }*/
+          return;
+
+        }
+        if((checkCol-1 > -1) && (m_p1ownBoard->getEntryAtPosition(checkCol, checkRow-1) == shipNum_string_test))//&&(medium->getEntryAtPosition(checkCol, checkRow-1)!="X" ))
+        {
+          //std::cout<<"\nHitRi";
+          checkCol--;
+          printPlayerBoards(m_p2ownBoard, m_p2oppBoard);
+          m_p1ownBoard->setEntryAtPosition("X", checkCol, checkRow );
+          m_p2oppBoard->setEntryAtPosition("H", checkCol, checkRow );
+          std::cout<<"\nHit";
+          shipNum = stoi(shipNum_string_test);
+          length--;
+          m_p1Ships->decreaseSize(shipNum);
+          if(m_p1Ships->allSunk()){
+            return;
+          }
+          if(length==0)
+          {
+            SRow = 7;
+            SCol = 0;
+            firstTurn=true;
+            //std::cout<<"this is what is first turn:"<<firstTurn;
+            return;
+          }
+          return;
+
+        }
+        else
+        {
+          //std::cout<<"\nYooooooo";
+        }
+      }
+      firstTurn=true;
+      return;
+    }
+  }
 
 void Game::p2Turn_AI_hard(){
   string wait = "";

@@ -53,6 +53,13 @@ class Game{
     bool stormWasUsedByP2;
 
     bool playingAgainstAI;
+    bool firstTurn=true;
+    int checkRow;
+    int checkCol;
+    std::string shipNum_string_test;
+    int SRow = 6;//7
+    int SCol = 3;//D
+    int length;
   public:
 
     /**
