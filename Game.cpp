@@ -1392,10 +1392,10 @@ if(firstTurn==true)
 {
   while(1){
     //srand (time(NULL));
-      //p2_attack_row =rand()%8;
-      //p2_attack_col = rand()%8;
-      p2_attack_row = 0;
-      p2_attack_col = 0;
+      p2_attack_row =rand()%8;
+      p2_attack_col = rand()%8;
+      //p2_attack_row = 0;
+      //p2_attack_col = 0;
       checkCol = p2_attack_col;
       checkRow= p2_attack_row;
     //std::cout<<"\nI'm YOOOO\n";
