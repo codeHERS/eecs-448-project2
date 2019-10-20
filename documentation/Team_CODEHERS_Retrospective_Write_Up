@@ -1,3 +1,9 @@
+EECS448 Team CodeHers Project2
+Members: Anjali Pare, Sindhu Shakamuri, Victoria Maldonado
+-----------------------------------------------------------
+
+
+____________________________________________________________________________________________________________
 Meetings:
 
 09/30/19
@@ -52,3 +58,15 @@ Morning meeting: Kept working on program by adding AI graphics and more sounds.
 Anjali and Victoria's house
 Members: Anjali, Sindhu, Victoria
 Afternoon meeting: Kept working on program. Added menu to chose AI and worked on retrospective write up.
+____________________________________________________________________________________________________________
+How was work split?
+
+The project we recieved was working well and was split into useful classes, so we did not need to add any additional classes.
+For our contribution to this project, we added an AI, a Storm feature, and Sound effects. We split the work as fair as we could taking
+in consideration that we had one team memeber who left for a conference for a week, and another team member who was sick at the start of
+the project. Anjali and Sindhu worked mainly on the AI functionality. Sindhu worked on the Medium AI, and Anjali did the Easy and Hard AI.
+Victoria added some "graphics" to the terminal with realtion to the AI following the other team's style. Anjali worked on sound features,
+she added all the sounds that are activated with different actions in the game. Victoria worked mainly on the Storm feature functionality.
+We also all gave ideas, approved sounds, and helped each other with things realted to git and segfaults. 
+
+____________________________________________________________________________________________________________
