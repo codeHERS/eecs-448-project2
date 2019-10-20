@@ -1427,8 +1427,8 @@ void Game::p2Turn_AI_medium(){
   if(isHit(m_p1ownBoard, p2_attack_row, p2_attack_col)){
 
     bool checkRight = true;
-    bool checkLeft = false;
-    bool checkUp = false;
+    bool checkLeft = true;
+    bool checkUp = true;
     bool checkDown = true;
 
 
@@ -1439,17 +1439,6 @@ void Game::p2Turn_AI_medium(){
     shipNum = stoi(shipNum_string);
     m_p1Ships->decreaseSize(shipNum);
     m_p1ownBoard->setEntryAtPosition("X", p2_attack_col, p2_attack_row );
-
-  /*  if(shipNum == 1)
-    {
-      checkRight = false;
-      checkLeft = false;
-      checkUp = false;
-      checkDown = false;
-    }*/
-  //  shipNum_string = m_p1ownBoard->getEntryAtPosition(p2_attack_col, p2_attack_row);
-    //shipNum = stoi(shipNum_string);
-    //m_p1Ships->decreaseSize(shipNum);
 
 
     //checks right
