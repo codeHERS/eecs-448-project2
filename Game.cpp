@@ -1377,7 +1377,6 @@ void Game::p2Turn_AI_easy(){
 
     //print Board
 
-
     while(1){
       //srand (time(NULL));
         p2_attack_row =rand()%7;
